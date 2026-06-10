@@ -6,8 +6,8 @@ export const INITIAL_HOME: HomeData = {
   professionalTitle: '',
   description: '',
   heroVideoUrl: 'https://player.vimeo.com/video/1178017661',
-  portfolioPdfUrl: 'https://github.com/hjhj9798-crypto/heeji-portfolio/raw/main/pdf/Portfolio.pdf',
-  resumePdfUrl: 'https://github.com/hjhj9798-crypto/heeji-portfolio/raw/main/pdf/Resume.pdf',
+  portfolioPdfUrl: '/pdf/Portfolio.pdf',
+  resumePdfUrl: '/pdf/Resume.pdf',
   backgroundGifUrl: 'https://www.dropbox.com/scl/fi/c9g92m7l9346rm10o6uqy/Home_Background.mp4?rlkey=t4tfcndi1mnzqoa6cy15mk1h4&raw=1'
 };
 
