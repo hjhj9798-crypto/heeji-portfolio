@@ -63,13 +63,13 @@ const Home: React.FC<HomeProps> = ({ projects, about, home, contact }) => {
         
         {home.backgroundGifUrl && (
 <>
-  <div className="absolute inset-0 bg-black/55 z-0 pointer-events-none"></div>
+  <div className="absolute inset-0 bg-black/42 z-0 pointer-events-none"></div>
 
   <div
     className="absolute inset-0 z-0 pointer-events-none"
     style={{
       background:
-        'radial-gradient(circle at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 25%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0) 70%)'
+        'radial-gradient(ellipse at center, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.68) 18%, rgba(0,0,0,0.35) 38%, rgba(0,0,0,0) 68%)'
     }}
   />
 </>
