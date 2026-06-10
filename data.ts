@@ -8,7 +8,7 @@ export const INITIAL_HOME: HomeData = {
   heroVideoUrl: 'https://player.vimeo.com/video/1178017661',
   portfolioPdfUrl: '/pdf/Portfolio.pdf',
   resumePdfUrl: '/pdf/Resume.pdf',
-  backgroundGifUrl: 'https://www.dropbox.com/scl/fi/c9g92m7l9346rm10o6uqy/Home_Background.mp4?rlkey=t4tfcndi1mnzqoa6cy15mk1h4&raw=1'
+  backgroundGifUrl: '/video/Home_Background.mp4'
 };
 
 export const INITIAL_PROJECTS: Project[] = [
