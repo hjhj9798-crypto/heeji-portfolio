@@ -63,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ projects, about, home, contact }) => {
         
         {home.backgroundGifUrl && (
 <>
-  <div className="absolute inset-0 bg-black/42 z-0 pointer-events-none"></div>
+  <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
 
   <div
     className="absolute inset-0 z-0 pointer-events-none"
