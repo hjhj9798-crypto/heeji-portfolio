@@ -27,6 +27,12 @@ const Navbar: React.FC = () => {
       
       setIsScrolled(currentScrollY > 20);
 
+      if (window.innerWidth < 768) {
+        setIsVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
       // If at the very top, always show
       if (currentScrollY < 50) {
         setIsVisible(true);
@@ -134,7 +140,7 @@ const Navbar: React.FC = () => {
 
   const navLinkClass = (id: string) => {
     const isActive = activeSection === id;
-    return `${isActive ? 'text-blue-500 scale-110' : 'text-gray-500'} hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-2 md:px-4 lg:px-8 text-[14px] md:text-[16px] lg:text-[20px] font-bold tracking-[0.1em] md:tracking-[0.15em] outline-none`;
+    return `${isActive ? 'text-blue-500 md:scale-110' : 'text-gray-500'} hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-1 sm:px-2 md:px-4 lg:px-8 text-[9px] sm:text-[11px] md:text-[16px] lg:text-[20px] font-bold tracking-[0.04em] sm:tracking-[0.08em] md:tracking-[0.15em] outline-none`;
   };
 
   const pdfLinkClass = () => {
@@ -153,7 +159,7 @@ const Navbar: React.FC = () => {
       />
       
       <nav 
-        className={`hidden md:flex fixed top-0 left-0 w-full z-[70] h-20 md:h-24 transition-all duration-500 ease-in-out ${
+        className={`flex fixed top-0 left-0 w-full z-[70] h-14 md:h-24 transition-all duration-500 ease-in-out ${
           (isVisible || isHoveringTrigger) ? 'pointer-events-auto' : 'pointer-events-none'
         } ${
           isScrolled ? 'bg-[#0b0e14]/80 backdrop-blur-md' : 'bg-transparent'
@@ -162,7 +168,7 @@ const Navbar: React.FC = () => {
         onMouseEnter={() => setIsHoveringTrigger(true)}
         onMouseLeave={() => setIsHoveringTrigger(false)}
       >
-        <div className="max-w-[1920px] mx-auto w-full h-full px-4 md:px-6 lg:px-8 flex items-center justify-between pointer-events-auto">
+        <div className="max-w-[1920px] mx-auto w-full h-full px-2 md:px-6 lg:px-8 flex items-center justify-center md:justify-between pointer-events-auto">
           {/* Mobile Logo/Name */}
           <div className={`md:hidden transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
             <span className="text-blue-500 font-bold tracking-tighter text-sm uppercase">H.WOO</span>
@@ -192,7 +198,7 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
-          <div className="flex gap-2 md:gap-4 lg:gap-8 items-stretch h-full">
+          <div className="flex gap-1 sm:gap-2 md:gap-4 lg:gap-8 items-stretch justify-center h-full w-full md:w-auto">
             <button onClick={() => scrollToSection('home')} className={navLinkClass('home')}>HOME</button>
             <button onClick={() => scrollToSection('showreel')} className={navLinkClass('showreel')}>SHOWREEL</button>
             <button onClick={() => scrollToSection('projects')} className={navLinkClass('projects')}>PROJECTS</button>
@@ -206,11 +212,11 @@ const Navbar: React.FC = () => {
 };
 
 const Footer: React.FC = () => (
-  <footer className="py-20 px-8 md:px-16 border-t border-white/5 bg-[#0b0e14]">
+  <footer className="py-10 md:py-20 px-5 md:px-16 border-t border-white/5 bg-[#0b0e14]">
     <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
       <div className="space-y-2 text-center md:text-left">
         <p className="text-blue-500 font-bold tracking-tight text-2xl uppercase">HEEJI WOO</p>
-        <p className="text-gray-600 text-[16px] uppercase tracking-[0.15em] font-bold">© HEEJI WOO. ALL RIGHTS RESERVED.</p>
+        <p className="text-gray-600 text-[11px] md:text-[16px] uppercase tracking-[0.1em] md:tracking-[0.15em] font-bold">© HEEJI WOO. ALL RIGHTS RESERVED.</p>
       </div>
     </div>
   </footer>

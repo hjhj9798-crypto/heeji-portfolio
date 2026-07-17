@@ -87,7 +87,7 @@ const Lightbox: React.FC<{
 };
 
 const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="mb-12 pt-16 md:pt-32 border-t border-white/5 first:pt-0 first:border-0 reveal flex items-center gap-6">
+  <div className="mb-6 md:mb-12 pt-10 md:pt-32 border-t border-white/5 first:pt-0 first:border-0 reveal flex items-center gap-4 md:gap-6">
     <h3 className="text-[10px] md:text-[20px] text-blue-500 uppercase tracking-[0.15em] font-bold">{children}</h3>
     <div className="flex-grow h-[1px] bg-white/5"></div>
   </div>
@@ -198,7 +198,7 @@ const ExtraProjectCard: React.FC<{
   const filteredImages = extra.images.filter(img => img.category === activeTab);
 
   return (
-    <div className="bg-white/[0.01] border border-white/5 rounded-3xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 reveal">
+    <div className="bg-white/[0.01] border border-white/5 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-12 reveal">
       {/* Visual Info Block (4 cols on lg, full on mobile) */}
       <div className="lg:col-span-4 flex flex-col justify-between space-y-8 select-none">
         <div className="space-y-6">
@@ -370,7 +370,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     <div className="relative">
       {/* 1. FULLSCREEN HERO SECTION */}
       {project.id !== 'additional-work' && (
-        <section className="relative h-screen w-full overflow-hidden">
+        <section className="relative h-[78svh] md:h-screen w-full overflow-hidden">
           {/* Background Image Container */}
           <div 
             className="absolute inset-0 group"
@@ -387,7 +387,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
 
 
           {/* Hero Content */}
-          <div className="absolute inset-0 flex flex-col justify-end pb-12 md:pb-20 px-6 md:px-16 max-w-[1920px] mx-auto w-full z-10 pointer-events-none">
+          <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-20 px-5 md:px-16 max-w-[1920px] mx-auto w-full z-10 pointer-events-none">
             <div className="max-w-6xl reveal active space-y-6 md:space-y-12 pointer-events-auto">
               <div className="space-y-2 md:space-y-4">
                 {project.projectType && (
@@ -435,7 +435,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
       )}
 
       {/* 2. PROJECT CONTENT SECTIONS */}
-      <div className="max-w-[1920px] mx-auto px-8 md:px-16 py-32 space-y-32 md:space-y-64">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-16 py-14 md:py-32 space-y-16 md:space-y-64">
         
         {(project.mainVideoUrl || (project.additionalVideoUrls && project.additionalVideoUrls.length > 0)) && (
           <section className="reveal">
@@ -478,7 +478,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   className="aspect-video bg-[#161b22] overflow-hidden cursor-zoom-in group img-hover-container shadow-2xl rounded-2xl"
                   onClick={() => openLightbox(project.detailRenders, idx)}
                 >
-                  <img src={img} alt="Detail render" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" />
+                  <img src={img} alt="Detail render" className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-[1.02]" />
                 </div>
               ))}
             </div>
@@ -495,7 +495,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   className="aspect-video bg-[#161b22] overflow-hidden cursor-zoom-in group img-hover-container shadow-2xl rounded-2xl"
                   onClick={() => openLightbox(project.clayRenders, idx)}
                 >
-                  <img src={img} alt="Clay render" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" />
+                  <img src={img} alt="Clay render" className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-[1.02]" />
                 </div>
               ))}
             </div>
@@ -512,7 +512,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   className="aspect-video bg-[#161b22] overflow-hidden cursor-zoom-in group img-hover-container shadow-2xl rounded-2xl"
                   onClick={() => openLightbox(project.wireframes, idx)}
                 >
-                  <img src={img} alt="Wireframe" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" />
+                  <img src={img} alt="Wireframe" className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-[1.02]" />
                 </div>
               ))}
             </div>
