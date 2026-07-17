@@ -161,9 +161,7 @@ const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     images: [
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/176/large/hj_w-.jpg?1780794018' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/258/large/hj_w-3.jpg?1780794377' },
-      { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/723/253/large/hj_w-4.jpg?1780794362' },
-      { category: 'Clay & Zbrush', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/140/large/hj_w-highresscreenshot00005.jpg?1780793899' },
-      { category: 'Clay & Zbrush', url: 'https://cdnb.artstation.com/p/assets/images/images/099/723/147/large/hj_w-highresscreenshot00022.jpg?1780793906' }
+      { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/723/253/large/hj_w-4.jpg?1780794362' }
     ],
     youtubeUrl: 'https://youtu.be/3cZzkhyeNJM?si=E4JO3QbJj8XDL2KN'
   },
