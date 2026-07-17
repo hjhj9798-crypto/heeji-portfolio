@@ -61,7 +61,10 @@ export const INITIAL_PROJECTS: Project[] = [
     ],
     references: [],
     mainVideoUrl: 'https://www.youtube.com/embed/jRykO-HJfYM',
-    additionalVideoUrls: ['https://www.youtube.com/embed/zXLYcIOoPEQ'],
+    additionalVideoUrls: [
+      'https://www.youtube.com/embed/zXLYcIOoPEQ',
+      'https://www.youtube.com/embed/nUynsG89Y3Q'
+    ],
     turntableVideoUrl: '',
     technicalBreakdown: ''
   },
