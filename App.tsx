@@ -140,11 +140,11 @@ const Navbar: React.FC = () => {
 
   const navLinkClass = (id: string) => {
     const isActive = activeSection === id;
-    return `${isActive ? 'text-blue-500 md:scale-110' : 'text-gray-500'} hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-1 sm:px-2 md:px-4 lg:px-8 text-[9px] sm:text-[11px] md:text-[16px] lg:text-[20px] font-bold tracking-[0.04em] sm:tracking-[0.08em] md:tracking-[0.15em] outline-none`;
+    return `${isActive ? 'text-blue-500 md:scale-110' : 'text-gray-500'} hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-1 md:px-4 lg:px-8 text-[8px] sm:text-[10px] md:text-[16px] lg:text-[20px] font-bold tracking-normal sm:tracking-[0.04em] md:tracking-[0.15em] outline-none whitespace-nowrap`;
   };
 
   const pdfLinkClass = () => {
-    return 'text-gray-500 hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-2 md:px-4 lg:px-8 text-[14px] md:text-[16px] lg:text-[20px] font-bold tracking-[0.1em] md:tracking-[0.15em] outline-none';
+    return 'text-gray-400 hover:text-white transition-all duration-300 uppercase cursor-pointer relative h-full flex items-center px-1 md:px-4 lg:px-8 text-[8px] sm:text-[10px] md:text-[16px] lg:text-[20px] font-bold tracking-normal sm:tracking-[0.04em] md:tracking-[0.15em] outline-none whitespace-nowrap';
   };
 
   const navTransform = (isVisible || isHoveringTrigger) ? 'translateY(0)' : 'translateY(-100%)';
@@ -168,14 +168,14 @@ const Navbar: React.FC = () => {
         onMouseEnter={() => setIsHoveringTrigger(true)}
         onMouseLeave={() => setIsHoveringTrigger(false)}
       >
-        <div className="max-w-[1920px] mx-auto w-full h-full px-2 md:px-6 lg:px-8 flex items-center justify-center md:justify-between pointer-events-auto">
+        <div className="max-w-[1920px] mx-auto w-full h-full px-1 md:px-6 lg:px-8 flex items-center justify-center md:justify-between pointer-events-auto overflow-x-auto">
           {/* Mobile Logo/Name */}
-          <div className={`md:hidden transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="hidden">
             <span className="text-blue-500 font-bold tracking-tighter text-sm uppercase">H.WOO</span>
           </div>
 
-          {/* Left Side: Desktop PDF Links */}
-          <div className="hidden md:flex items-stretch h-full">
+          {/* PDF Links */}
+          <div className="flex items-stretch h-full shrink-0">
             <button 
               onClick={() => {
                 if (INITIAL_HOME.portfolioPdfUrl) {
@@ -184,7 +184,8 @@ const Navbar: React.FC = () => {
               }} 
               className={pdfLinkClass()}
             >
-              PORTFOLIO PDF
+              <span className="md:hidden">PORTFOLIO</span>
+              <span className="hidden md:inline">PORTFOLIO PDF</span>
             </button>
             <button 
               onClick={() => {
@@ -198,9 +199,12 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
-          <div className="flex gap-1 sm:gap-2 md:gap-4 lg:gap-8 items-stretch justify-center h-full w-full md:w-auto">
+          <div className="flex gap-0.5 sm:gap-1 md:gap-4 lg:gap-8 items-stretch justify-center h-full shrink-0 md:w-auto">
             <button onClick={() => scrollToSection('home')} className={navLinkClass('home')}>HOME</button>
-            <button onClick={() => scrollToSection('showreel')} className={navLinkClass('showreel')}>SHOWREEL</button>
+            <button onClick={() => scrollToSection('showreel')} className={navLinkClass('showreel')}>
+              <span className="md:hidden">REEL</span>
+              <span className="hidden md:inline">SHOWREEL</span>
+            </button>
             <button onClick={() => scrollToSection('projects')} className={navLinkClass('projects')}>PROJECTS</button>
             <button onClick={() => scrollToSection('about')} className={navLinkClass('about')}>ABOUT</button>
             <button onClick={() => scrollToSection('contact')} className={navLinkClass('contact')}>CONTACT</button>
