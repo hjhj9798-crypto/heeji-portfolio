@@ -5,7 +5,7 @@ export const INITIAL_HOME: HomeData = {
   name: 'Heeji Woo',
   professionalTitle: '',
   description: '',
-  heroVideoUrl: 'https://player.vimeo.com/video/1178017661',
+  heroVideoUrl: 'https://player.vimeo.com/video/1210744531',
   portfolioPdfUrl: '/pdf/Portfolio.pdf',
   resumePdfUrl: '/pdf/Resume.pdf',
   backgroundGifUrl: '/video/Home_Background.mp4'
