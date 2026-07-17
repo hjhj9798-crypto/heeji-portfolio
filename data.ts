@@ -28,7 +28,10 @@ export const INITIAL_PROJECTS: Project[] = [
       'https://cdnb.artstation.com/p/assets/images/images/097/396/323/large/hj_w-cinematic-7.jpg?1774035167',
       'https://cdna.artstation.com/p/assets/images/images/097/396/296/large/hj_w-cinematic-1.jpg?1774035104',
       'https://cdnb.artstation.com/p/assets/images/images/097/396/295/large/hj_w-cinematic.jpg?1774035093',
-      'https://cdna.artstation.com/p/assets/images/images/097/396/326/large/hj_w-cinematic-8.jpg?1774035178'
+      'https://cdna.artstation.com/p/assets/images/images/097/396/326/large/hj_w-cinematic-8.jpg?1774035178',
+      '/images/sol/beauty-cinematic-01.png',
+      '/images/sol/beauty-cinematic-02.png',
+      '/images/sol/beauty-cinematic-03.png'
     ],
     clayRenders: [
       'https://cdna.artstation.com/p/assets/images/images/099/540/146/large/hj_w-sol-main-clay01.jpg?1780261952',
