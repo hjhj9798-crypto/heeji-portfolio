@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Project } from '../types';
 import { useReveal } from '../hooks/useReveal';
@@ -107,6 +107,7 @@ interface ExtraProjectData {
   duration: string;
   description: string;
   images: ExtraImage[];
+  hairVideos?: string[];
   youtubeUrl?: string;
 }
 
@@ -182,9 +183,58 @@ const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
       { category: 'Clay & Zbrush', url: 'https://cdnb.artstation.com/p/assets/images/images/099/722/993/large/hj_w-clay.jpg?1780793395' },
       { category: 'Wireframe', url: 'https://cdna.artstation.com/p/assets/images/images/099/722/992/large/hj_w-wire01.jpg?1780793386' }
     ],
+    hairVideos: [
+      '/video/valhalla/Hair_1.mp4',
+      '/video/valhalla/Hair_2.mp4',
+      '/video/valhalla/Hair_3.mp4',
+      '/video/valhalla/Hair_4.mp4'
+    ],
     youtubeUrl: 'https://youtu.be/ZXod-0yUYfU?si=WS8RdCB7qCYfaFlv'
   }
 ];
+
+const LoopingHairVideo: React.FC<{ src: string; label: string }> = ({ src, label }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showControls, setShowControls] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let mounted = true;
+    video.muted = true;
+    video.play().catch(() => {
+      if (mounted) setShowControls(true);
+    });
+    return () => {
+      mounted = false;
+      video.pause();
+    };
+  }, [src]);
+
+  return (
+    <div className="rounded-xl overflow-hidden border border-white/5 bg-[#161b22]/30">
+      <video
+        ref={videoRef}
+        src={src}
+        aria-label={label}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        controls={showControls}
+        onError={() => setFailed(true)}
+        className="block w-full aspect-video object-contain"
+      />
+      {failed && (
+        <p className="p-3 text-sm text-gray-300">
+          Video could not load. <a className="text-blue-400 underline" href={src} target="_blank" rel="noopener noreferrer">Open video</a>
+        </p>
+      )}
+    </div>
+  );
+};
 
 const ExtraProjectCard: React.FC<{ 
   extra: ExtraProjectData; 
@@ -193,7 +243,7 @@ const ExtraProjectCard: React.FC<{
   const firstCategory = extra.images[0]?.category || 'Beauty';
   const [activeTab, setActiveTab] = useState<string>(firstCategory);
   
-  const tabs = ['Beauty', 'Clay & Zbrush', 'Wireframe', 'UV layout'];
+  const tabs = ['Beauty', 'Clay & Zbrush', 'Wireframe', 'Hair Simulation', 'UV layout'];
   
   const filteredImages = extra.images.filter(img => img.category === activeTab);
 
@@ -248,7 +298,9 @@ const ExtraProjectCard: React.FC<{
         <div className="flex gap-2 border-b border-white/5 pb-2 overflow-x-auto scroller-hidden">
           {tabs.map((tab) => {
             // Count items in this tab
-            const count = extra.images.filter(img => img.category === tab).length;
+            const count = tab === 'Hair Simulation'
+              ? (extra.hairVideos?.length || 0)
+              : extra.images.filter(img => img.category === tab).length;
             if (count === 0) return null; // Hide tabs that have no images
             
             const isActive = activeTab === tab;
@@ -270,7 +322,13 @@ const ExtraProjectCard: React.FC<{
 
         {/* Gallery Display */}
         <div className="flex-grow">
-          {filteredImages.length === 1 ? (
+          {activeTab === 'Hair Simulation' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {extra.hairVideos?.map((src, index) => (
+                <LoopingHairVideo key={src} src={src} label={`${extra.title} - Hair Simulation ${index + 1}`} />
+              ))}
+            </div>
+          ) : filteredImages.length === 1 ? (
             <div
               onClick={() => onImageClick(filteredImages.map(item => item.url), 0)}
               className="w-full h-[240px] sm:h-[350px] md:h-[400px] lg:h-[440px] bg-[#161b22]/30 border border-white/5 overflow-hidden rounded-xl cursor-zoom-in group relative shadow-md flex items-center justify-center"
