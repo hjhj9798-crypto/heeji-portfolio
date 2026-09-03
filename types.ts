@@ -6,6 +6,7 @@ export interface Project {
   year: string;
   thumbnail: string;
   description: string;
+  descriptionCredit?: { name: string; url: string };
   workTime: string;
   projectType?: string;
   toolsUsed: string[];

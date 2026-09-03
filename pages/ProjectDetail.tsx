@@ -152,12 +152,12 @@ const EXTRA_PROJECTS: ExtraProjectData[] = [
 const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   {
     id: 'raven',
-    title: 'Raven 2',
+    title: 'Raven 2 - Deathbringer',
     role: 'Asset Modeling & Texturing',
     year: '2025',
     tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
     duration: 'Modelling - 2 Days / Texturing - 1 Day',
-    description: 'Fantasy shield created for a cinematic trailer, with a focus on ornamental modeling, surface detailing, and material readability.',
+    description: 'Fantasy shield created for a cinematic trailer, with a focus on ornamental modeling, surface detailing, and texturing various materials.',
     images: [
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/176/large/hj_w-.jpg?1780794018' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/258/large/hj_w-3.jpg?1780794377' },
@@ -174,7 +174,7 @@ const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     year: '2025',
     tools: 'Maya / Unreal Engine 5',
     duration: 'Modelling - 3 Days',
-    description: 'Created high-poly ornamental accessories and footwear for a cinematic character, with an emphasis on intricate detailing and clean topology.',
+    description: 'Created high-poly accessories and shoes for a cinematic character, with a focus on detailed modeling and clean topology.',
     images: [
       { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/818/301/small/hj_w-4.jpg?1781054921' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/014/large/hj_w-1.jpg?1780793490' },
@@ -422,7 +422,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               </div>
 
               <p className="text-gray-300 leading-relaxed text-base md:text-2xl font-light max-w-4xl border-l-2 border-blue-600/40 pl-4 md:pl-8 drop-shadow-md">
-                {project.description}
+                {project.descriptionCredit?.name
+                  ? project.description.split(project.descriptionCredit.name).map((part, index) => (
+                    <React.Fragment key={index}>
+                      {index > 0 && (
+                        <a
+                          href={project.descriptionCredit!.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 underline underline-offset-4 hover:text-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400"
+                        >
+                          {project.descriptionCredit!.name}
+                        </a>
+                      )}
+                      {part}
+                    </React.Fragment>
+                  ))
+                  : project.description}
               </p>
             </div>
           </div>

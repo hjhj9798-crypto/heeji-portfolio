@@ -21,7 +21,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Unreal Engine 5'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
-    description: 'Hig-resolution character rebuilt from game-ready base data, with improved form and more defined anatomical structure.\nCreated for Netmarble’s SOL: Enchant cinematic, the costume focuses on complex ornamentation and rich surface detail. All elements were fully modeled in geometry, with subtle depth variation to enhance dimensionality and avoid flatness.',
+    description: 'High-resolution character rebuilt from the original game model, with improved form and more defined anatomical structure.\nCreated for Netmarble’s SOL: Enchant cinematic, the costume focuses on complex ornamentation and rich surface detail. All elements were fully modeled in geometry, with subtle depth variation to enhance dimensionality and avoid flatness.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/097/396/318/large/hj_w-cinematic-6.jpg?1774035157',
       'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
@@ -80,7 +80,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'Marvelous Designer', 'Substance 3D Painter', 'Unreal Engine'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/097/420/870/large/hj_w-js-thumnail.jpg?1774129584',
-    description: 'Designed and developed a character costume based on traditional Korean Hanbok for a cinematic project. Responsible for modeling and texturing, with a focus on material accuracy and production-ready quality.',
+    description: 'Designed and developed a character costume based on traditional Korean Hanbok for a cinematic project. Responsible for modeling and texturing, with a focus on material accuracy and realistic detail.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/097/420/870/large/hj_w-js-thumnail.jpg?1774129584',
       'https://cdnb.artstation.com/p/assets/images/images/099/722/211/large/hj_w-1.jpg?1780789406',
@@ -208,7 +208,8 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Personal Work',
     toolsUsed: ['Maya', 'Zbrush', 'Substance 3D Painter', 'Illustrator', 'Vray'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/080/582/824/large/hj_w-eva-01.jpg?1727954201',
-    description: 'Inspired by Neon Genesis Evangelion and an existing artist’s work, this scene reinterprets Unit-01 within a post apocalyptic setting. It presents an alternate outcome where the unit remains abandoned, focusing on environmental storytelling, lighting, and cinematic mood.',
+    description: 'Inspired by Neon Genesis Evangelion and the work of MILITELLO Florian, this scene reinterprets Unit-01 within a post apocalyptic setting. It presents an alternate outcome where the unit remains abandoned, focusing on environmental storytelling, lighting, and cinematic mood.',
+    descriptionCredit: { name: 'MILITELLO Florian', url: 'https://www.artstation.com/artwork/XnYrPl' },
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/080/582/824/large/hj_w-eva-01.jpg?1727954201',
       'https://cdna.artstation.com/p/assets/images/images/080/582/828/large/hj_w-eva-01-1.jpg?1727954225',
@@ -285,7 +286,7 @@ export const INITIAL_PROJECTS: Project[] = [
 ];
 
 export const INITIAL_ABOUT: AboutData = {
-  intro: "Hi, I'm Heeji Woo, a 3D Modeler specializing in realistic characters, costumes, and assets for cinematic production.",
+  intro: "Hi, I'm Heeji Woo. I create 3D characters and assets with striking silhouettes and intricate detail.",
   profileImage: '',
   tools: [
     { 
