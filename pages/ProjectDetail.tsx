@@ -104,10 +104,12 @@ interface ExtraProjectData {
   role: string;
   year: string;
   tools: string;
-  duration: string;
+  duration?: string;
   description: string;
   images: ExtraImage[];
   hairVideos?: string[];
+  beautyVideos?: string[];
+  videoClips?: string[];
   youtubeUrl?: string;
 }
 
@@ -190,6 +192,75 @@ const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
       '/video/valhalla/Hair_4.mp4'
     ],
     youtubeUrl: 'https://youtu.be/ZXod-0yUYfU?si=WS8RdCB7qCYfaFlv'
+  },
+  {
+    id: 'architect',
+    title: 'ARCHITECT',
+    role: 'Book Modeling & Texturing',
+    year: '2025',
+    duration: '2 Days',
+    tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
+    description: 'Created a book asset, with a focus on modeling, textures, and small details.',
+    images: [],
+    beautyVideos: ['/video/architect/Book_3.mp4', '/video/architect/Book.mp4', '/video/architect/Book_2.mp4'],
+    youtubeUrl: 'https://youtu.be/TMz7owMWn7I?si=YPLSORcX3p-AuGww'
+  },
+  {
+    id: 'raven2-warlord',
+    title: 'RAVEN 2 - WARLORD',
+    role: 'Hair Grooming & Simulation',
+    year: '2026',
+    duration: '1 Day',
+    tools: 'Houdini / Unreal Engine 5',
+    description: 'Created the hair groom and simulation, with a focus on natural hair flow and movement.',
+    images: [{ category: 'Beauty', url: '/images/raven2-warlord/Raven_Hair.png' }],
+    hairVideos: ['/video/raven2-warlord/Hair.mp4'],
+    youtubeUrl: 'https://youtu.be/5UCXGXjMLO4?si=k_-RBM49D8NlNzI3'
+  },
+  {
+    id: 'vampir-cinematic-01',
+    title: 'VAMPIR - CINEMATIC 01',
+    role: 'Modeling & Texturing',
+    year: '2026',
+    duration: '2 Days',
+    tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
+    description: 'Modeled and textured a fantasy pillar for VAMPIR, with a focus on its shape, surface details, and worn materials.',
+    images: [
+      { category: 'Beauty', url: '/images/vampir-cinematic-01/beauty-01.png' },
+      { category: 'Beauty', url: '/images/vampir-cinematic-01/beauty-02.png' },
+      { category: 'Clay & Zbrush', url: '/images/vampir-cinematic-01/Clay.png' }
+    ],
+    videoClips: ['/video/vampir-cinematic-01/Pillar_2.mp4', '/video/vampir-cinematic-01/Pillar_3.mp4', '/video/vampir-cinematic-01/Pillar_4.mp4', '/video/vampir-cinematic-01/Pillar_1.mp4'],
+    youtubeUrl: 'https://youtu.be/ImBzB6hcMiA?si=6gF21HjMjnq3S_Gv'
+  },
+  {
+    id: 'vampir-cinematic-02',
+    title: 'VAMPIR - CINEMATIC 02',
+    role: 'Hair Grooming & Simulation',
+    year: '2026',
+    duration: '5 Days',
+    tools: 'Houdini / Unreal Engine 5',
+    description: 'Created hair grooms and simulations for VAMPIR, with a focus on hair shape and natural movement.',
+    images: [],
+    hairVideos: ['/video/vampir-cinematic-02/Woman_Hair_1.mp4', '/video/vampir-cinematic-02/Woman_Vampire_Hair.mp4', '/video/vampir-cinematic-02/Woman_Vampire_Hair_3.mp4', '/video/vampir-cinematic-02/Vampire_Hair.mp4'],
+    youtubeUrl: 'https://youtu.be/gsYusPqwLx8?si=TioP_oTzlTiNTSrU'
+  },
+  {
+    id: 'zeus',
+    title: 'ZEUS: GOD OF ARROGANCE',
+    role: 'Hair Grooming & Simulation',
+    year: '2026',
+    tools: 'Houdini / Unreal Engine 5',
+    description: 'Created hair grooms and simulations for multiple characters, with a focus on each character’s hairstyle and natural movement.',
+    images: [
+      { category: 'Beauty', url: '/images/zeus/beauty-01.png' },
+      { category: 'Beauty', url: '/images/zeus/beauty-02.png' },
+      { category: 'Beauty', url: '/images/zeus/beauty-03.png' },
+      { category: 'Beauty', url: '/images/zeus/beauty-04.png' },
+      { category: 'Beauty', url: '/images/zeus/beauty-05.png' }
+    ],
+    hairVideos: ['/video/zeus/Woman_Hair.mp4', '/video/zeus/Apolo_Hair.mp4', '/video/zeus/Archer_Hair_3.mp4', '/video/zeus/Man_Hair.mp4'],
+    youtubeUrl: 'https://youtu.be/ZgpwqHiH5oc?si=bepKQxMQ99vb01No'
   }
 ];
 
@@ -197,10 +268,32 @@ const LoopingHairVideo: React.FC<{ src: string; label: string }> = ({ src, label
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showControls, setShowControls] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setLoad(true);
+      setInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+      if (entry.isIntersecting) setLoad(true);
+    }, { rootMargin: '200px' });
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (!load || !inView) {
+      video.pause();
+      return;
+    }
     let mounted = true;
     video.muted = true;
     video.play().catch(() => {
@@ -210,19 +303,19 @@ const LoopingHairVideo: React.FC<{ src: string; label: string }> = ({ src, label
       mounted = false;
       video.pause();
     };
-  }, [src]);
+  }, [src, load, inView]);
 
   return (
     <div className="rounded-xl overflow-hidden border border-white/5 bg-[#161b22]/30">
       <video
         ref={videoRef}
-        src={src}
+        src={load ? src : undefined}
         aria-label={label}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         controls={showControls}
         onError={() => setFailed(true)}
         className="block w-full aspect-video object-contain"
@@ -240,10 +333,15 @@ const ExtraProjectCard: React.FC<{
   extra: ExtraProjectData; 
   onImageClick: (images: string[], index: number) => void;
 }> = ({ extra, onImageClick }) => {
-  const firstCategory = extra.images[0]?.category || 'Beauty';
+  const tabs = ['Beauty', 'Clay & Zbrush', 'Wireframe', 'Hair Simulation', 'Video Clips', 'UV layout'];
+  const videosForTab = (tab: string) => tab === 'Beauty' ? (extra.beautyVideos || [])
+    : tab === 'Hair Simulation' ? (extra.hairVideos || [])
+    : tab === 'Video Clips' ? (extra.videoClips || []) : [];
+  const countForTab = (tab: string) => extra.images.filter(img => img.category === tab).length + videosForTab(tab).length;
+  const firstCategory = tabs.find(tab => countForTab(tab) > 0) || 'Beauty';
   const [activeTab, setActiveTab] = useState<string>(firstCategory);
   
-  const tabs = ['Beauty', 'Clay & Zbrush', 'Wireframe', 'Hair Simulation', 'UV layout'];
+  const filteredVideos = videosForTab(activeTab);
   
   const filteredImages = extra.images.filter(img => img.category === activeTab);
 
@@ -282,8 +380,8 @@ const ExtraProjectCard: React.FC<{
             <span className="text-gray-300 font-medium">{extra.role}</span>
           </div>
           <div>
-            <span className="text-[10px] md:text-xs text-blue-500 uppercase tracking-[0.15em] font-bold block mb-1">Year / Duration</span>
-            <span className="text-gray-300 font-medium">{extra.year} <span className="text-white/10 mx-2">|</span> {extra.duration}</span>
+            <span className="text-[10px] md:text-xs text-blue-500 uppercase tracking-[0.15em] font-bold block mb-1">{extra.duration ? 'Year / Duration' : 'Year'}</span>
+            <span className="text-gray-300 font-medium">{extra.year}{extra.duration && <><span className="text-white/10 mx-2">|</span>{extra.duration}</>}</span>
           </div>
           <div>
             <span className="text-[10px] md:text-xs text-blue-500 uppercase tracking-[0.15em] font-bold block mb-1">Tools</span>
@@ -298,9 +396,7 @@ const ExtraProjectCard: React.FC<{
         <div className="flex gap-2 border-b border-white/5 pb-2 overflow-x-auto scroller-hidden">
           {tabs.map((tab) => {
             // Count items in this tab
-            const count = tab === 'Hair Simulation'
-              ? (extra.hairVideos?.length || 0)
-              : extra.images.filter(img => img.category === tab).length;
+            const count = countForTab(tab);
             if (count === 0) return null; // Hide tabs that have no images
             
             const isActive = activeTab === tab;
@@ -322,10 +418,23 @@ const ExtraProjectCard: React.FC<{
 
         {/* Gallery Display */}
         <div className="flex-grow">
-          {activeTab === 'Hair Simulation' ? (
+          {filteredVideos.length > 0 ? (
+            <div className={`grid grid-cols-1 ${filteredVideos.length > 1 ? 'md:grid-cols-2' : ''} gap-3`}>
+              {filteredVideos.map((src, index) => (
+                <LoopingHairVideo key={src} src={src} label={`${extra.title} - ${activeTab} ${index + 1}`} />
+              ))}
+            </div>
+          ) : filteredImages.length > 4 && activeTab !== 'UV layout' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {extra.hairVideos?.map((src, index) => (
-                <LoopingHairVideo key={src} src={src} label={`${extra.title} - Hair Simulation ${index + 1}`} />
+              {filteredImages.map((img, idx) => (
+                <button
+                  type="button"
+                  key={img.url}
+                  onClick={() => onImageClick(filteredImages.map(item => item.url), idx)}
+                  className="aspect-video overflow-hidden rounded-xl border border-white/5 bg-[#161b22]/30 cursor-zoom-in"
+                >
+                  <img src={img.url} alt={`${extra.title} - ${img.category} ${idx + 1}`} loading="lazy" className="w-full h-full object-contain" />
+                </button>
               ))}
             </div>
           ) : filteredImages.length === 1 ? (
