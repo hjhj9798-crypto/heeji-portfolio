@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { Project } from '../types';
 import { useReveal } from '../hooks/useReveal';
 
@@ -152,7 +152,7 @@ const EXTRA_PROJECTS: ExtraProjectData[] = [
   }
 ];
 
-const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
+export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   {
     id: 'raven',
     title: 'Raven 2 - Deathbringer',
@@ -241,7 +241,11 @@ const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     duration: '5 Days',
     tools: 'Houdini / Unreal Engine 5',
     description: 'Created hair grooms and simulations for VAMPIR, with a focus on hair shape and natural movement.',
-    images: [],
+    images: [
+      { category: 'Beauty', url: '/images/vampir-cinematic-02/Vampire_SN.png' },
+      { category: 'Beauty', url: '/images/vampir-cinematic-02/Vampire_capture.png' },
+      { category: 'Beauty', url: '/images/vampir-cinematic-02/Vampire_capture(1).png' }
+    ],
     hairVideos: ['/video/vampir-cinematic-02/Woman_Hair_1.mp4', '/video/vampir-cinematic-02/Woman_Vampire_Hair.mp4', '/video/vampir-cinematic-02/Woman_Vampire_Hair_3.mp4', '/video/vampir-cinematic-02/Vampire_Hair.mp4'],
     youtubeUrl: 'https://youtu.be/gsYusPqwLx8?si=TioP_oTzlTiNTSrU'
   },
@@ -507,6 +511,9 @@ const ExtraProjectCard: React.FC<{
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const { id } = useParams<{ id: string }>();
+  const { search } = useLocation();
+  const requestedWork = new URLSearchParams(search).get('work');
+  const selectedWork = ADDITIONAL_WORK_EXTRA_PROJECTS.find(extra => extra.id === requestedWork);
   const project = projects.find(p => p.id === id);
   useReveal();
 
@@ -518,7 +525,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'instant'});
-  }, [id]);
+  }, [id, search]);
 
   if (!project) {
     return (
@@ -781,8 +788,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         {project.id === 'additional-work' && (
           <section className="reveal">
             <SectionTitle>production work</SectionTitle>
+            {selectedWork && (
+              <Link to="/#additional-work" className="inline-block mb-8 text-sm text-blue-400 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400">
+                ← Back to Additional Work
+              </Link>
+            )}
             <div className="space-y-16">
-              {ADDITIONAL_WORK_EXTRA_PROJECTS.map((extra) => (
+              {(selectedWork ? [selectedWork] : ADDITIONAL_WORK_EXTRA_PROJECTS).map((extra) => (
                 <ExtraProjectCard 
                   key={extra.id} 
                   extra={extra} 

@@ -1,8 +1,9 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 import { Project, AboutData, HomeData, ContactData } from '../types';
+import AdditionalCarousel from './AdditionalCarousel';
 
 interface HomeProps {
   projects: Project[];
@@ -13,6 +14,12 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ projects, about, home, contact }) => {
   useReveal();
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash !== '#additional-work') return;
+    const frame = requestAnimationFrame(() => document.getElementById('additional-work')?.scrollIntoView({ block: 'start' }));
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
 
   const handleOpenLink = (url: string) => {
     if (!url || url === '#') {
@@ -113,7 +120,7 @@ const Home: React.FC<HomeProps> = ({ projects, about, home, contact }) => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6 md:gap-y-10">
-          {projects.map((project, idx) => {
+          {projects.filter(project => project.id !== 'additional-work').map((project, idx) => {
             const isAdditional = project.id === 'additional-work';
             return (
               <Link key={project.id} to={`/projects/${project.id}`} className="group reveal" style={{ transitionDelay: `${idx * 0.1}s` }}>
@@ -162,6 +169,7 @@ const Home: React.FC<HomeProps> = ({ projects, about, home, contact }) => {
             );
           })}
         </div>
+        <AdditionalCarousel />
       </section>
 
       {/* 3. ABOUT SECTION */}
