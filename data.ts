@@ -34,11 +34,11 @@ export const INITIAL_PROJECTS: Project[] = [
       '/images/sol/beauty-cinematic-03.png'
     ],
     clayRenders: [
-      'https://cdna.artstation.com/p/assets/images/images/099/540/146/large/hj_w-sol-main-clay01.jpg?1780261952',
-      'https://cdnb.artstation.com/p/assets/images/images/099/540/147/large/hj_w-sol-main-clay02.jpg?1780261961',
-      'https://cdnb.artstation.com/p/assets/images/images/099/540/159/large/hj_w-sol-main-clay05.jpg?1780261991',
-      'https://cdnb.artstation.com/p/assets/images/images/099/540/149/large/hj_w-sol-main-clay03.jpg?1780261972',
-      'https://cdnb.artstation.com/p/assets/images/images/099/540/157/large/hj_w-sol-main-clay04.jpg?1780261981'
+      '/images/sol/clay-20260903/ScreenShot00009.png',
+      '/images/sol/clay-20260903/ScreenShot00005.png',
+      '/images/sol/clay-20260903/ScreenShot00001.png',
+      '/images/sol/clay-20260903/ScreenShot00004.png',
+      '/images/sol/clay-20260903/ScreenShot00002.png'
     ],
     wireframes: [
       'https://cdna.artstation.com/p/assets/images/images/099/540/170/large/hj_w-sol-main-wire01.jpg?1780262015',
