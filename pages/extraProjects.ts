@@ -94,8 +94,7 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     hairVideos: [
       '/video/valhalla/Hair_1.mp4',
       '/video/valhalla/Hair_2.mp4',
-      '/video/valhalla/Hair_3.mp4',
-      '/video/valhalla/Hair_4.mp4'
+      '/video/valhalla/Hair_3.mp4'
     ],
     youtubeUrl: 'https://youtu.be/ZXod-0yUYfU?si=WS8RdCB7qCYfaFlv'
   },
@@ -173,4 +172,3 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     youtubeUrl: 'https://youtu.be/ZgpwqHiH5oc?si=bepKQxMQ99vb01No'
   }
 ];
-
