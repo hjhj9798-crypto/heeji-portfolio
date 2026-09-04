@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Project } from '../types';
-import { ADDITIONAL_WORK_EXTRA_PROJECTS, EXTRA_PROJECTS, ExtraProjectData } from './extraProjects';
+import { ADDITIONAL_WORK_EXTRA_PROJECTS, ExtraProjectData } from './extraProjects';
 import AdditionalCarousel from './AdditionalCarousel';
 import { ImageGallery, LoopingVideo, VideoEmbed } from './Media';
 export { ADDITIONAL_WORK_EXTRA_PROJECTS } from './extraProjects';
@@ -10,7 +10,7 @@ function ProjectHero({title, image, role, year, tools, duration, description, cr
   return <header className="detail-hero">{image && <img className="detail-cover" src={image} alt="" fetchPriority="high"/>}<div className="detail-shade"/><div className="project-info"><h1>{title}</h1><dl><div><dt>Role</dt><dd>{role}</dd></div><div><dt>Year</dt><dd>{year}</dd></div><div><dt>Tools</dt><dd>{tools}</dd></div>{duration && <div><dt>Duration</dt><dd>{duration}</dd></div>}</dl><p>{description}</p>{credit && <a className="credit-link" href={credit.url} target="_blank" rel="noopener noreferrer">Original concept: {credit.name} ↗</a>}</div></header>;
 }
 function Clips({title, sources}: {title:string;sources?:string[]}) {
-  return sources?.length ? <section className="media-section"><h2>{title}</h2><div className="video-grid">{sources.map((src,i) => <LoopingVideo key={src} src={src} label={`${title} ${i + 1}`}/>)}</div></section> : null;
+  return sources?.length ? <section className="media-section"><h2>{title}</h2><div className="video-grid">{sources.map((src,i) => <LoopingVideo expandable key={src} src={src} label={`${title} ${i + 1}`}/>)}</div></section> : null;
 }
 function ExtraContent({project, supporting = false}: {project:ExtraProjectData;supporting?:boolean}) {
   const beauty = project.images.filter(image => image.category === 'Beauty').map(image => image.url);
@@ -42,7 +42,7 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
     <ImageGallery title="Beauty" images={project.detailRenders}/><ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes}/><ImageGallery title="UV Layout" images={project.uvLayouts}/>
     {project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
     <ImageGallery title="References" images={project.references}/>{project.technicalBreakdown && <section className="technical-section"><h2>Technical Breakdown</h2><p>{project.technicalBreakdown}</p></section>}
-    {project.id === '5' && EXTRA_PROJECTS.map(extra => <ExtraContent key={extra.id} project={extra} supporting/>)}
+
     <div className="back-link"><Link to="/#projects">← All Work</Link></div>
   </div>;
 }

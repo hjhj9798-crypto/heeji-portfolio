@@ -58,6 +58,7 @@ export const EXTRA_PROJECTS: ExtraProjectData[] = [
 ];
 
 export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
+  ...EXTRA_PROJECTS,
   {
     id: 'raven',
     title: 'Raven 2 - Deathbringer',
@@ -172,5 +173,4 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     youtubeUrl: 'https://youtu.be/ZgpwqHiH5oc?si=bepKQxMQ99vb01No'
   }
 ];
-
 

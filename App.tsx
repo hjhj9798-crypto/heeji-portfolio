@@ -4,6 +4,7 @@ import { INITIAL_PROJECTS, INITIAL_ABOUT, INITIAL_HOME, INITIAL_CONTACT } from '
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import './portfolio.css';
+import './refinements.css';
 
 function Navigation() {
   const location = useLocation();
@@ -31,5 +32,5 @@ export default function App() {
     <Route path="/" element={<Home projects={INITIAL_PROJECTS} about={INITIAL_ABOUT} home={INITIAL_HOME} contact={INITIAL_CONTACT}/>}/>
     <Route path="/projects/:id" element={<ProjectDetail projects={INITIAL_PROJECTS}/>}/>
     <Route path="*" element={<div className="not-found"><h1>Page not found</h1><Link to="/">Back to home</Link></div>}/>
-  </Routes></main><footer className="site-footer"><Link to="/">HEEJI WOO</Link><span>© {new Date().getFullYear()} Heeji Woo</span><a href={`mailto:${INITIAL_CONTACT.email}`}>Contact ↗</a></footer></HashRouter>;
+  </Routes></main><footer className="site-footer"><Link to="/">HEEJI WOO</Link><span>© {new Date().getFullYear()} Heeji Woo</span></footer></HashRouter>;
 }
