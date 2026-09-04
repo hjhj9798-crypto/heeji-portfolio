@@ -42,7 +42,7 @@ html,.carousel-track{scroll-behavior:auto}
 .cv-item p{max-width:none}
 .detail-hero{overflow:visible;align-items:stretch;isolation:isolate;height:auto;min-height:0}
 .detail-cover{align-self:start;grid-area:1/1;width:100%;height:auto;max-height:calc(100svh - var(--header-height));object-fit:contain}
-.detail-shade{align-self:stretch;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,rgba(0,0,0,.28) 25%,rgba(0,0,0,.1) 48%,transparent 70%)}
+.detail-shade{align-self:stretch;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.50) 0%,rgba(0,0,0,.28) 25%,rgba(0,0,0,.1) 48%,transparent 70%)}
 .project-info{z-index:2;max-width:none;min-width:0;padding:64px var(--page-space) 48px;background:transparent;overflow-wrap:anywhere;text-shadow:0 1px 3px rgba(0,0,0,.65)}
 .project-info>p{max-width:1500px}
 .project-info dl>div{min-width:0}
