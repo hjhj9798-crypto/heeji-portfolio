@@ -13,6 +13,10 @@ export function VideoEmbed({ url, title }: { url: string; title: string }) {
 }
 
 export function LoopingVideo({ src, label, className = '', expandable = false }: { src: string; label: string; className?: string; expandable?: boolean }) {
+  const optimized = src.startsWith('/video/');
+  const previewSrc = optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
+  const fullSrc = optimized && !src.endsWith('/main.mp4') ? previewSrc.replace(/\.mp4$/, '-hd.mp4') : previewSrc;
+  const poster = optimized ? previewSrc.replace(/\.mp4$/, '.jpg') : undefined;
   const ref = useRef<HTMLVideoElement>(null);
   const [expanded, setExpanded] = useState(false);
   const fullscreen = useRef<HTMLDialogElement>(null);
@@ -53,47 +57,39 @@ export function LoopingVideo({ src, label, className = '', expandable = false }:
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setLoaded(true);
-        if (!reduced && video.currentSrc) video.play().catch(() => setControls(true));
+        if (!reduced && video.currentSrc && !document.hidden && !document.querySelector('dialog[open]')) video.play().catch(() => setControls(true));
       } else video.pause();
     }, { threshold: 0.05 });
-    observer.observe(video);
-    return () => { observer.disconnect(); video.pause(); };
+    const preloader = new IntersectionObserver(([entry]) => {
+      if(entry.isIntersecting) { setLoaded(true); preloader.disconnect(); }
+    }, {rootMargin:'400px'});
+    const visibility = () => {
+      if(document.hidden) video.pause();
+      else { const rect=video.getBoundingClientRect(); if(!reduced && rect.bottom>0 && rect.top<innerHeight && !document.querySelector('dialog[open]')) video.play().catch(()=>{}); }
+    };
+    preloader.observe(video); observer.observe(video);
+    document.addEventListener('visibilitychange',visibility);
+    return () => { preloader.disconnect(); observer.disconnect(); document.removeEventListener('visibilitychange',visibility); video.pause(); };
   }, [src]);
-  return <div className={`loop-media ${className}`}><video ref={ref} src={loaded ? src : undefined} muted loop playsInline controls={controls && !expandable} preload="none" aria-label={label} onLoadedData={() => {
+  return <div className={`loop-media ${className}`}><video ref={ref} src={loaded ? previewSrc : undefined} poster={poster} muted loop playsInline controls={controls && !expandable} preload="auto" aria-label={label} onLoadedData={() => {
     const video = ref.current;
     if (video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const rect = video.getBoundingClientRect();
-      if (rect.top < innerHeight && rect.bottom > 0) video.play().catch(() => setControls(true));
+      if (rect.top < innerHeight && rect.bottom > 0 && !document.hidden && !document.querySelector('dialog[open]')) video.play().catch(() => setControls(true));
     }
   }} onError={() => setFailed(true)}/>{expandable && <button className="video-expand" aria-label={`View ${label} fullscreen`} onClick={() => { playbackTime.current = ref.current?.currentTime || 0; setExpanded(true); }}><span>↗</span></button>}{failed && <a className="media-error" href={src}>Open video ↗</a>}
     {expanded && <dialog ref={fullscreen} className="video-fullscreen" aria-label={`${label} fullscreen; click anywhere or press Escape to close`} onCancel={() => setExpanded(false)} onClick={() => { playbackTime.current = expandedVideo.current?.currentTime || playbackTime.current; setExpanded(false); }}>
-      <video ref={expandedVideo} src={src} muted loop playsInline autoPlay onLoadedMetadata={() => { if(expandedVideo.current) expandedVideo.current.currentTime = playbackTime.current; }}/>
+      <video ref={expandedVideo} src={fullSrc} poster={poster} muted loop playsInline autoPlay onLoadedMetadata={() => { if(expandedVideo.current) expandedVideo.current.currentTime = playbackTime.current; }}/>
       <button className="fullscreen-close" autoFocus aria-label="Close fullscreen video">×</button><span className="fullscreen-hint">Click anywhere or press Esc to close</span>
     </dialog>}
   </div>;
 }
 
-export function ImageGallery({ title, images }: { title: string; images: string[] }) {
+export function ImageGallery({ title, images, firstFull = false }: { title: string; images: string[]; firstFull?: boolean }) {
   const [index, setIndex] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
-  const grid = useRef<HTMLDivElement>(null);
   const isUV = title.toLowerCase().startsWith('uv');
-  const [columns, setColumns] = useState(Math.max(1, Math.ceil(Math.sqrt(images.length))));
-  useEffect(() => {
-    if(!isUV || !grid.current) return;
-    const element = grid.current;
-    const update = () => {
-      const width = element.clientWidth, height = element.clientHeight;
-      let best = 1, size = 0;
-      for(let c = 1; c <= images.length; c++) {
-        const cell = Math.min((width - (c - 1) * 8) / c, (height - (Math.ceil(images.length / c) - 1) * 8) / Math.ceil(images.length / c));
-        if(cell > size) {size = cell; best = c;}
-      }
-      setColumns(best);
-    };
-    const observer = new ResizeObserver(update); observer.observe(element); update();
-    return () => observer.disconnect();
-  }, [isUV, images.length]);
+  const [ratios, setRatios] = useState<Record<string, number>>({});
   useEffect(() => {
     if (index === null) return;
     const previous = document.body.style.overflow;
@@ -103,7 +99,13 @@ export function ImageGallery({ title, images }: { title: string; images: string[
   }, [index === null]);
   if (!images.length) return null;
   const step = (direction: number) => setIndex(current => current === null ? null : (current + direction + images.length) % images.length);
-  return <section className={`media-section ${isUV ? 'uv-section' : ''}`}><h2>{title}</h2><div ref={grid} className={`image-grid ${isUV ? 'uv-grid' : ''}`} style={isUV ? {gridTemplateColumns:`repeat(${columns}, minmax(0, 1fr))`,gridTemplateRows:`repeat(${Math.ceil(images.length / columns)}, minmax(0, 1fr))`} : undefined}>{images.map((url, i) => <button className="gallery-image" type="button" key={`${url}-${i}`} onClick={() => setIndex(i)} aria-label={`Enlarge ${title} image ${i + 1}`}><img src={url} alt={`${title} — ${i + 1}`} loading="lazy" decoding="async"/></button>)}</div>
+  const renderImage = (url: string, i: number) => <button className="gallery-image" type="button" key={url + i} style={!isUV ? {flex: `${ratios[url] || 1.77778} 1 0`} : undefined} onClick={() => setIndex(i)} aria-label={`Enlarge ${title} image ${i+1}`}><img src={url} alt={`${title} — ${i+1}`} loading="lazy" decoding="async" onLoad={event => {
+    const image=event.currentTarget;
+    if(image.naturalHeight) setRatios(current => ({...current,[url]:image.naturalWidth/image.naturalHeight}));
+  }}/></button>;
+  const rows: number[][] = [];
+  for(let i=0;i<images.length;) { const size=firstFull && i===0 ? 1 : 2; rows.push(Array.from({length:Math.min(size,images.length-i)},(_,j)=>i+j)); i+=size; }
+  return <section className={`media-section ${isUV ? 'uv-section' : ''}`}><h2>{title}</h2><div className={isUV ? 'image-grid uv-grid' : 'image-rows'}>{isUV ? images.map(renderImage) : rows.map((row,i) => <div className="gallery-row" key={i}>{row.map(index=>renderImage(images[index],index))}</div>)}</div>
     {index !== null && <dialog ref={dialog} className="lightbox" aria-label={`${title} enlarged image`} onCancel={() => setIndex(null)} onClick={e => { if(e.target === e.currentTarget) setIndex(null); }} onKeyDown={e => { if(e.key === 'ArrowRight') step(1); if(e.key === 'ArrowLeft') step(-1); }}>
       <button className="lightbox-close" aria-label="Close image" onClick={() => setIndex(null)} autoFocus>×</button><img src={images[index]} alt={`${title} — ${index + 1}`}/>
       {images.length > 1 && <><button className="lightbox-prev" aria-label="Previous image" onClick={() => step(-1)}>‹</button><button className="lightbox-next" aria-label="Next image" onClick={() => step(1)}>›</button></>}<span className="image-counter">{index + 1} / {images.length}</span>

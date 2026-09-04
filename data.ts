@@ -286,20 +286,21 @@ export const INITIAL_PROJECTS: Project[] = [
 ];
 
 export const INITIAL_ABOUT: AboutData = {
-  intro: "Hi, I'm Heeji Woo. I create 3D characters and assets with striking silhouettes and intricate detail.",
+  intro: "3D Modeler with production experience in game cinematics and VFX, creating characters, creatures, hard-surface assets, props, and costumes.\nSkilled in modeling, sculpting, texturing, grooming, and look development, delivering hero characters and key assets from modeling to final look.\nExperienced in rebuilding assets from game models, scan data, and concept images while preserving the original design.\nFocused on strong forms, clean topology, and production-ready assets for animation and close-up shots.",
   profileImage: '',
+  skills: ['3D Modeling', 'Hard Surface Modeling', 'Character Modeling', 'Creature Modeling', 'Prop Modeling', 'Costume Modeling', 'Digital Sculpting', 'Texturing', 'Look Development', 'Hair Grooming', 'Hair Simulation'],
   tools: [
     { 
       category: 'Sculpting & Modeling', 
-      items: ['ZBrush', 'Maya', 'Marvelous Designer', 'Houdini (Groom)'] 
+      items: ['Maya', 'ZBrush', 'Marvelous Designer', 'Houdini (Groom)'] 
     },
     { 
       category: 'Lookdev & Texturing', 
-      items: ['Substance 3D Painter', 'Autodesk Arnold', 'Photoshop', 'Unreal Engine'] 
+      items: ['Substance 3D Painter', 'Autodesk Arnold', 'Unreal Engine', 'Photoshop'] 
     },
     { 
       category: 'Additional', 
-      items: ['Adobe After Effects', 'Adobe Premiere Pro', 'Adobe Illustrator', 'Knald'] 
+      items: ['Adobe After Effects', 'Adobe Premiere Pro', 'Adobe Illustrator'] 
     }
   ],
   experience: [
@@ -307,23 +308,23 @@ export const INITIAL_ABOUT: AboutData = {
       id: 'exp2',
       company: 'Coot Imageworks',
       role: '3D Modeler',
-      period: 'Apr 2025 - May 2026',
+      period: '2025 - 2026',
       description: 'Worked on character and asset modeling, costume creation, texturing, and hair grooming for game cinematic projects.',
-      location: 'Bucheon-si, South Korea'
+      location: 'Bucheon, South Korea'
     },
     {
       id: 'exp1',
       company: 'Westworld',
       role: '3D Modeler',
-      period: 'Nov 2024 - Feb 2025',
+      period: '2024 - 2025',
       description: 'Worked on mechanical models, environment assets, and props for feature film VFX production.',
-      location: 'Goyang-si, South Korea'
+      location: 'Goyang, South Korea'
     }
   ],
   education: [
     {
-      degree: '3D Modeling',
-      institution: 'CGFIVE ACADEMY',
+      degree: '3D Modeling Professional Program',
+      institution: 'CG5 Academy',
       year: '2022 - 2024',
       location: 'Seoul, South Korea'
     },

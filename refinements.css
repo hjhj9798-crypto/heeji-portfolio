@@ -24,3 +24,35 @@ html{scroll-padding-top:calc(var(--header-height) + 20px)}
 @media(max-width:1200px){:root{--header-height:150px}.site-header{grid-template-columns:1fr auto;gap:18px;padding:20px 24px}.site-header .wordmark{grid-column:2;grid-row:1}.site-header nav{grid-column:1/-1;justify-content:center}.site-header a{font-size:18px}.site-header .wordmark{font-size:40px}.project-info{grid-area:2/1;padding-top:28px}.detail-shade{background:linear-gradient(transparent 75%,#000)}.detail-cover{margin-top:0}.project-info h1{font-size:60px}.project-info dl>div{max-width:100%}.about-columns{gap:6%}.tools-grid{grid-template-columns:1fr}.cv-title{display:block}}
 @media(max-width:760px){:root{--header-height:120px}.site-header a{font-size:16px}.site-header .wordmark{font-size:36px}.site-header{padding:16px;gap:16px}.site-header .downloads,.site-header nav{gap:18px}.home-hero{margin-top:var(--header-height)}.showreel{padding-top:24px}.project-card .card-caption{font-size:24px}.project-card .card-caption small{font-size:16px}.additional-card .card-caption{font-size:20px}.about-columns{grid-template-columns:1fr;gap:40px}.tools-grid{grid-template-columns:1fr 1fr}.project-info h1{font-size:50px}.project-info>p{font-size:24px}.project-info dd{font-size:22px}.uv-grid{padding:0 12px}.contact-section>div{font-size:18px}}
 @media(max-width:480px){:root{--header-height:112px}.site-header a{font-size:14px}.site-header .wordmark{font-size:30px}.site-header .downloads,.site-header nav{gap:14px}.site-header{padding:15px 12px}.project-card .card-caption{font-size:24px;padding:24px 12px 12px}.project-card .card-caption small{display:none}.additional-card .card-caption{font-size:20px}.about-intro{font-size:24px}.email-link{font-size:27px;overflow-wrap:anywhere}.project-info h1{font-size:50px;overflow-wrap:anywhere}.project-info dt{font-size:20px}.project-info dd{font-size:22px}.project-info{padding:24px}.uv-grid{gap:6px}.site-footer{grid-template-columns:1fr 1fr}.site-footer>span{text-align:right}.fullscreen-hint{font-size:13px}}
+
+/* Portfolio polish: content-sized heroes, flush galleries and immediate navigation. */
+html,.carousel-track{scroll-behavior:auto}
+.site-header .wordmark:hover{opacity:1;color:inherit;transform:none}
+.site-footer{font-size:20px}
+.additional-label:after{display:none}
+.additional-card{min-width:0;align-self:flex-start;aspect-ratio:1208/1250}
+.additional-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.section-label{text-decoration:none;border:0}
+.about-intro{max-width:none;white-space:pre-line;border-left:2px solid #ddd;padding-left:24px;line-height:1.45;font-size:clamp(20px,1.45vw,30px)}
+.skills-tools{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:56px}
+.skills-tools .tools-section{margin:0}
+.skills-tools .tools-grid{grid-template-columns:1fr;gap:24px}
+.skills-section li{font-size:22.5px;font-weight:650;margin-bottom:20px}
+.skills-tools .tools-grid li{margin-bottom:20px}
+.cv-item p{max-width:none}
+.detail-hero{overflow:visible;align-items:stretch;isolation:isolate;height:auto;min-height:0}
+.detail-cover{align-self:start;grid-area:1/1;width:100%;height:auto;max-height:calc(100svh - var(--header-height));object-fit:contain}
+.detail-shade{align-self:stretch;z-index:1;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.9) 18%,rgba(0,0,0,.5) 42%,transparent 75%)}
+.project-info{z-index:2;max-width:none;min-width:0;padding:64px var(--page-space) 48px;background:linear-gradient(to top,#000 0%,#000d 65%,transparent 100%);overflow-wrap:anywhere}
+.project-info>p{max-width:1500px}
+.project-info dl>div{min-width:0}
+.image-rows{display:flex;flex-direction:column;gap:0}
+.gallery-row{display:flex;align-items:flex-start;gap:0}
+.gallery-row .gallery-image{min-width:0;width:0;line-height:0}
+.gallery-row img{display:block;width:100%;height:auto}
+.uv-grid{--uv-size:clamp(160px,14vw,540px);height:auto;min-height:0;padding:0;gap:0;grid-template-columns:repeat(auto-fill,var(--uv-size));grid-template-rows:none;justify-content:start;align-items:start}
+.uv-grid .gallery-image{width:var(--uv-size);height:auto;display:block}
+.uv-grid .gallery-image img{width:100%;height:auto;display:block}
+@media(max-width:1200px){.project-info{grid-area:2/1;background:linear-gradient(to top,#000,#000e 85%,transparent);padding-top:32px}.skills-section li{font-size:19.5px}}
+@media(max-width:760px){.skills-tools{gap:24px}.about-intro{white-space:normal}.project-info{padding:32px 24px}.site-footer{font-size:20px}}
+@media(max-width:480px){.site-footer{font-size:18px}.gallery-row{flex-direction:column}.gallery-row .gallery-image{width:100%;flex:auto!important}.skills-tools{grid-template-columns:1fr}.uv-grid{--uv-size:50vw}}

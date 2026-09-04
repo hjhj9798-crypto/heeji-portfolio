@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ADDITIONAL_WORK_EXTRA_PROJECTS } from './extraProjects';
 
@@ -7,14 +7,17 @@ export const additionalThumbnails: Record<string, string> = {
   'raven2-warlord': 'Raven2_Warlord_Thumbnail.png', 'vampir-cinematic-01': 'Vampir_Cinematic01_Thumbnail.png',
   'vampir-cinematic-02': 'Vampir_Cinematic02_Thumbnail.png', zeus: 'Zeus_Thumbnail.png'
 };
+let savedCarouselLeft = 0;
 export default function AdditionalCarousel() {
   const track = useRef<HTMLDivElement>(null);
   const [bounds, setBounds] = useState({ start: true, end: false });
   const [progress, setProgress] = useState(0);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = track.current;
     if (!element) return;
+    element.scrollLeft = savedCarouselLeft;
     const update = () => {
+      savedCarouselLeft = element.scrollLeft;
       const max = element.scrollWidth - element.clientWidth;
       setBounds({ start: element.scrollLeft < 2, end: element.scrollLeft >= max - 2 });
       setProgress(max > 0 ? element.scrollLeft / max * 1000 : 0);
@@ -41,7 +44,7 @@ export default function AdditionalCarousel() {
     <div className="carousel-controls"><button aria-label="Previous additional project" disabled={bounds.start} onClick={() => move(-1)}>‹</button><button aria-label="Next additional project" disabled={bounds.end} onClick={() => move(1)}>›</button></div>
     <div className="additional-label"><h2 id="additional-heading">ADDITIONAL<br/>WORK</h2></div>
     <div className="carousel-track" ref={track} tabIndex={0} role="region" aria-label="Additional projects" onKeyDown={e => { if(e.target === e.currentTarget && ['ArrowLeft','ArrowRight'].includes(e.key)) { e.preventDefault(); move(e.key === 'ArrowRight' ? 1 : -1); } }}>
-      {ADDITIONAL_WORK_EXTRA_PROJECTS.map(project => <Link className="additional-card" key={project.id} to={`/projects/additional-work?work=${encodeURIComponent(project.id)}`}><img src={additionalThumbnails[project.id] ? `/images/redesign-20260903/${additionalThumbnails[project.id]}` : project.images.find(image => image.category === 'Beauty')?.url} alt={project.title} loading="lazy" decoding="async"/><span className="card-caption">{project.title}</span></Link>)}
+      {ADDITIONAL_WORK_EXTRA_PROJECTS.map(project => <Link className="additional-card" key={project.id} to={`/projects/additional-work?work=${encodeURIComponent(project.id)}`}><img src={project.id === 'extra01' || project.id === 'extra02' ? `/images/polish-20260904/Sol_Extra${project.id === 'extra01' ? '01' : '02'}_Thumbnail.png` : additionalThumbnails[project.id] ? `/images/redesign-20260903/${additionalThumbnails[project.id]}` : project.images.find(image => image.category === 'Beauty')?.url} alt={project.title} loading="lazy" decoding="async"/><span className="card-caption">{project.title}</span></Link>)}
     </div>
     <input className="carousel-slider" type="range" min="0" max="1000" step="1" value={progress} aria-label="Additional work scroll position" onChange={event => {
       const element = track.current;

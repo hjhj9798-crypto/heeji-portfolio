@@ -36,6 +36,7 @@ export interface ToolCategory {
 }
 
 export interface AboutData {
+  skills?: string[];
   intro: string;
   profileImage: string;
   tools: ToolCategory[];
