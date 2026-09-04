@@ -6,7 +6,7 @@ import { LoopingVideo, VideoEmbed } from './Media';
 
 export default function Home({ projects, about, home, contact }: {projects: Project[]; about: AboutData; home: HomeData; contact: ContactData}) {
   return <>
-    <section className="home-hero" id="home" aria-label="Heeji Woo portfolio"><h1 className="sr-only">{home.name} — {home.professionalTitle}</h1><LoopingVideo src="/video/refinement-20260904/main.mp4" label="Portfolio cinematic background"/><div className="hero-shade"/></section>
+    <section className="home-hero" id="home" aria-label="Heeji Woo portfolio"><h1 className="sr-only">{home.name} — {home.professionalTitle}</h1><LoopingVideo src="/video/batch-20260904/main.mp4" label="Portfolio cinematic background"/><div className="hero-shade"/></section>
     <section className="showreel" id="showreel" aria-label="Showreel"><VideoEmbed url={home.heroVideoUrl} title="Heeji Woo — Showreel"/></section>
     <section className="project-grid" id="projects" aria-label="Selected work">{projects.filter(p => p.id !== 'additional-work').map(project => <Link key={project.id} className="project-card" to={`/projects/${project.id}`}><img src={project.id === '5' ? '/images/polish-20260904/Sol_Thumbnail.png' : project.thumbnail} alt={project.title} loading="lazy" decoding="async"/><span className="card-caption">{project.title}<small>{project.role}</small></span></Link>)}</section>
     <AdditionalCarousel/>

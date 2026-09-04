@@ -14,7 +14,7 @@ export function VideoEmbed({ url, title }: { url: string; title: string }) {
 
 export function LoopingVideo({ src, label, className = '', expandable = false }: { src: string; label: string; className?: string; expandable?: boolean }) {
   const optimized = src.startsWith('/video/');
-  const previewSrc = optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
+  const previewSrc = src.startsWith('/video/batch-20260904/') ? src : optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
   const fullSrc = optimized && !src.endsWith('/main.mp4') ? previewSrc.replace(/\.mp4$/, '-hd.mp4') : previewSrc;
   const poster = optimized ? previewSrc.replace(/\.mp4$/, '.jpg') : undefined;
   const ref = useRef<HTMLVideoElement>(null);
@@ -105,10 +105,16 @@ export function ImageGallery({ title, images, firstFull = false }: { title: stri
   }}/></button>;
   const rows: number[][] = [];
   for(let i=0;i<images.length;) { const size=firstFull && i===0 ? 1 : 2; rows.push(Array.from({length:Math.min(size,images.length-i)},(_,j)=>i+j)); i+=size; }
-  return <section className={`media-section ${isUV ? 'uv-section' : ''}`}><h2>{title}</h2><div className={isUV ? 'image-grid uv-grid' : 'image-rows'}>{isUV ? images.map(renderImage) : rows.map((row,i) => <div className="gallery-row" key={i}>{row.map(index=>renderImage(images[index],index))}</div>)}</div>
+  return <section className={`media-section ${isUV ? 'uv-section' : ''}`}><h2>{title}</h2><div className={isUV ? 'image-grid uv-grid' : 'image-rows'}>{isUV ? images.map(renderImage) : rows.map((row,i) => <div className={`gallery-row ${images.length === 1 || (firstFull && i === 0) ? 'single-media' : row.length === 1 ? 'odd-row' : ''}`} key={i}>{row.map(index=>renderImage(images[index],index))}</div>)}</div>
     {index !== null && <dialog ref={dialog} className="lightbox" aria-label={`${title} enlarged image`} onCancel={() => setIndex(null)} onClick={e => { if(e.target === e.currentTarget) setIndex(null); }} onKeyDown={e => { if(e.key === 'ArrowRight') step(1); if(e.key === 'ArrowLeft') step(-1); }}>
-      <button className="lightbox-close" aria-label="Close image" onClick={() => setIndex(null)} autoFocus>×</button><img src={images[index]} alt={`${title} — ${index + 1}`}/>
+      <button className="lightbox-close" aria-label="Close image" onClick={() => setIndex(null)} autoFocus>×</button><img src={originalImage(images[index])} onError={event => { if(event.currentTarget.src !== images[index]) event.currentTarget.src = images[index]; }} onClick={() => setIndex(null)} alt={`${title} — ${index + 1}`}/>
       {images.length > 1 && <><button className="lightbox-prev" aria-label="Previous image" onClick={() => step(-1)}>‹</button><button className="lightbox-next" aria-label="Next image" onClick={() => step(1)}>›</button></>}<span className="image-counter">{index + 1} / {images.length}</span>
     </dialog>}
   </section>;
+}
+
+function originalImage(url: string) {
+  const file = url.match(/hj_w-(sol01-(?:butty01|butty03|butty04|wire01|uv))\.jpg/i)?.[1];
+  const originals: Record<string,string> = {'sol01-butty01':'Sol01_Butty01.png','sol01-butty03':'Sol01_Butty03.png','sol01-butty04':'Sol01_Butty04.png','sol01-wire01':'Sol01_Wire01.png','sol01-uv':'Sol01_UV.png'};
+  return file ? `/images/fullsize-20260904/${originals[file.toLowerCase()]}` : url;
 }

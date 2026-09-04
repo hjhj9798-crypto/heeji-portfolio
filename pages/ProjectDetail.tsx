@@ -10,7 +10,7 @@ function ProjectHero({title, image, role, year, tools, duration, description, cr
   return <header className="detail-hero">{image && <img className="detail-cover" src={image} alt="" fetchPriority="high"/>}<div className="detail-shade"/><div className="project-info"><h1>{title}</h1><dl><div><dt>Role</dt><dd>{role}</dd></div><div><dt>Year</dt><dd>{year}</dd></div><div><dt>Tools</dt><dd>{tools}</dd></div>{duration && <div><dt>Duration</dt><dd>{duration}</dd></div>}</dl><p>{description}</p>{credit && <a className="credit-link" href={credit.url} target="_blank" rel="noopener noreferrer">Original concept: {credit.name} ↗</a>}</div></header>;
 }
 function Clips({title, sources}: {title:string;sources?:string[]}) {
-  return sources?.length ? <section className="media-section"><h2>{title}</h2><div className="video-grid">{sources.map((src,i) => <LoopingVideo expandable key={src} src={src} label={`${title} ${i + 1}`}/>)}</div></section> : null;
+  return sources?.length ? <section className="media-section"><h2>{title}</h2><div className={`video-grid ${sources.length === 1 ? 'single-video' : ''}`}>{sources.map((src,i) => <LoopingVideo expandable key={src} src={src} label={`${title} ${i + 1}`}/>)}</div></section> : null;
 }
 function ExtraContent({project, supporting = false}: {project:ExtraProjectData;supporting?:boolean}) {
   const beauty = project.images.filter(image => image.category === 'Beauty').map(image => image.url);
@@ -37,9 +37,9 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
   const project = projects.find(item => item.id === id);
   if(!project) return <div className="not-found"><h1>Project not found</h1><Link to="/#projects">Back to work</Link></div>;
   const reels = [project.mainVideoUrl, ...(project.additionalVideoUrls || [])].filter(Boolean) as string[];
-  return <div className="project-detail" key={project.id}><ProjectHero title={project.title} image={project.id === '5' ? '/images/polish-20260904/Sol_Thumbnail.png' : project.thumbnail} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
+  return <div className="project-detail" key={project.id}><ProjectHero title={project.title} image={project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
     {reels.length > 0 && <section className="media-section reel-section"><h2>Reel</h2>{reels.map((url,i) => <VideoEmbed key={url} url={url} title={`${project.title} — Reel ${i + 1}`}/>)}</section>}
-    <ImageGallery title="Beauty" images={project.detailRenders}/><ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes}/><ImageGallery title="UV Layout" images={project.uvLayouts}/>
+    {project.id === '4' ? <Clips title="Beauty" sources={['A','B','C','D'].map(letter => `/video/batch-20260904/JS_${letter}.mp4`)}/> : <ImageGallery title="Beauty" images={project.detailRenders}/>} <ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes}/><ImageGallery title="UV Layout" images={project.uvLayouts}/>
     {project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
     <ImageGallery title="References" images={project.references}/>{project.technicalBreakdown && <section className="technical-section"><h2>Technical Breakdown</h2><p>{project.technicalBreakdown}</p></section>}
 
