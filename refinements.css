@@ -75,3 +75,5 @@ html,.carousel-track{scroll-behavior:auto}
 .detail-hero .project-info{grid-area:1/1;align-self:end;position:relative;z-index:2;padding-top:clamp(180px,35svh,640px);padding-bottom:48px;background:transparent;text-shadow:none}
 .detail-hero .project-info *{text-shadow:none}
 @media(max-width:760px){.detail-hero .project-info{padding-top:200px;padding-bottom:32px}}
+.company-permission{margin:72px var(--page-space) 0;color:#888;font-size:14px;line-height:1.6}
+@media(max-width:760px){.company-permission{margin-top:48px;font-size:13px}}
