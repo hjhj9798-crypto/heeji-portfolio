@@ -14,7 +14,8 @@ export function VideoEmbed({ url, title }: { url: string; title: string }) {
 
 export function LoopingVideo({ src, label, className = '', expandable = false }: { src: string; label: string; className?: string; expandable?: boolean }) {
   const optimized = src.startsWith('/video/');
-  const previewSrc = src.startsWith('/video/batch-20260904/') ? src : optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
+  const isDirectOptimized = src.startsWith('/video/batch-20260904/') || src.startsWith('/video/content-20260905/');
+  const previewSrc = isDirectOptimized ? src : optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
   const fullSrc = optimized && !src.endsWith('/main.mp4') ? previewSrc.replace(/\.mp4$/, '-hd.mp4') : previewSrc;
   const poster = optimized ? previewSrc.replace(/\.mp4$/, '.jpg') : undefined;
   const ref = useRef<HTMLVideoElement>(null);

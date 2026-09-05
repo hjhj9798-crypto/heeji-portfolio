@@ -79,11 +79,11 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   {
     id: 'valhalla_survival',
     title: 'Valhalla survival',
-    role: 'Ornament Modeling & Hair Simulation',
+    role: 'Ornament Modeling, Hair Simulation & Creature Sculpting, Texturing and Look Development',
     year: '2025',
-    tools: 'Maya / Unreal Engine 5',
+    tools: 'Maya / ZBrush / Substance 3D Painter / Unreal Engine 5',
     duration: 'Modelling - 3 Days',
-    description: 'Created high-poly accessories and shoes for a cinematic character, with a focus on detailed modeling and clean topology.',
+    description: 'Created high-poly ornaments and shoes for the female cinematic character, with a focus on detailed modeling and clean topology, and contributed to parts of the hair simulation. For the monster character, I sculpted and textured the face and body and handled the look development.',
     images: [
       { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/818/301/small/hj_w-4.jpg?1781054921' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/014/large/hj_w-1.jpg?1780793490' },
@@ -96,6 +96,7 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
       '/video/valhalla/Hair_2.mp4',
       '/video/valhalla/Hair_3.mp4'
     ],
+    beautyVideos: ['/video/content-20260905/valhalla/Lion_04.mp4', '/video/content-20260905/valhalla/Lion_05.mp4', '/video/content-20260905/valhalla/Lion_03.mp4'],
     youtubeUrl: 'https://youtu.be/ZXod-0yUYfU?si=WS8RdCB7qCYfaFlv'
   },
   {
@@ -157,10 +158,10 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   {
     id: 'zeus',
     title: 'ZEUS: GOD OF ARROGANCE',
-    role: 'Hair Grooming & Simulation',
+    role: 'Statue Modeling, Texturing, Look Development & Hair Simulation',
     year: '2026',
-    tools: 'Houdini / Unreal Engine 5',
-    description: 'Created hair grooms and simulations for multiple characters, with a focus on each character’s hairstyle and natural movement.',
+    tools: 'Houdini / ZBrush / Substance 3D Painter / Unreal Engine 5',
+    description: 'Created and refined the statue assets through modeling, texturing, and look development for the cinematic production. I also contributed to hair grooming and simulation for multiple characters, focusing on natural movement and shot-ready results.',
     images: [
       { category: 'Beauty', url: '/images/zeus/beauty-01.png' },
       { category: 'Beauty', url: '/images/zeus/beauty-02.png' },
@@ -168,6 +169,7 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
       { category: 'Beauty', url: '/images/zeus/beauty-04.png' },
       { category: 'Beauty', url: '/images/zeus/beauty-05.png' }
     ],
+    beautyVideos: ['/video/content-20260905/zeus/Zeus.mp4'],
     hairVideos: ['/video/zeus/Woman_Hair.mp4', '/video/zeus/Apolo_Hair.mp4', '/video/zeus/Archer_Hair_3.mp4', '/video/zeus/Man_Hair.mp4'],
     youtubeUrl: 'https://youtu.be/ZgpwqHiH5oc?si=bepKQxMQ99vb01No'
   }
