@@ -286,7 +286,7 @@ export const INITIAL_PROJECTS: Project[] = [
 ];
 
 export const INITIAL_ABOUT: AboutData = {
-  intro: "3D Modeler with production experience in game cinematics and VFX, creating characters, creatures, hard-surface assets, props, and costumes.\nSkilled in modeling, sculpting, texturing, grooming, and look development, delivering hero characters and key assets from modeling to final look.\nExperienced in rebuilding assets from game models, scan data, and concept images while preserving the original design.\nFocused on strong forms, clean topology, and production-ready assets for animation and close-up shots.",
+  intro: "3D Modeler and Asset Artist with production experience in game cinematics and VFX, creating characters, creatures, costumes, props, and hard-surface assets.\n\nExperienced in rebuilding low-resolution game models, scan data, and limited concept references as detailed cinematic assets through modeling, sculpting, retopology, UVs, PBR texturing, grooming, and look-development support.\n\nDeveloped a Houdini-to-Unreal grooming workflow adopted by the production team and used to create 12 hair assets.\n\nFocused on strong forms, readable detail, and assets that support the needs of rigging, FX, lighting, and final shots.",
   profileImage: '',
   skills: ['3D Modeling', 'Hard Surface Modeling', 'Character Modeling', 'Creature Modeling', 'Prop Modeling', 'Costume Modeling', 'Digital Sculpting', 'Texturing', 'Look Development', 'Hair Grooming', 'Hair Simulation'],
   tools: [
