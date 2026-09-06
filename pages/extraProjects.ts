@@ -161,7 +161,7 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
     role: 'Statue Modeling, Texturing, Look Development & Hair Simulation',
     year: '2026',
     tools: 'Houdini / ZBrush / Substance 3D Painter / Unreal Engine 5',
-    description: 'My work at CooT Imageworks included contributing as a 3D Modeler to the cinematic production of ZEUS: God of Arrogance, developed by A Button and published by Com2uS.\n\nCreated and refined the statue assets through modeling, texturing, and look development for the cinematic production. I also contributed to hair grooming and simulation for multiple characters, focusing on natural movement and shot-ready results.',
+    description: 'My work at CooT Imageworks included contributing as a 3D Modeler to the cinematic production of ZEUS: God of Arrogance, developed by A Button and published by Com2uS.\n\nCreated and refined the statue assets through modeling, texturing, and look development for the cinematic production. I also contributed to hair grooming and simulation for multiple characters, focusing on natural movement and polished results for cinematic shots.',
     images: [
       { category: 'Beauty', url: '/images/zeus/beauty-01.png' },
       { category: 'Beauty', url: '/images/zeus/beauty-02.png' },

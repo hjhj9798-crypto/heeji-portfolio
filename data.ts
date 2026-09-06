@@ -288,7 +288,7 @@ export const INITIAL_PROJECTS: Project[] = [
 export const INITIAL_ABOUT: AboutData = {
   intro: "I’m a 3D Modeler and Asset Artist with experience in game cinematics and VFX, specializing in characters, creatures, costumes, props, and hard-surface assets.\nMy experience includes creating detailed cinematic assets from low-resolution game models, scan data, and limited concept references, as well as developing practical grooming workflows using Houdini and Unreal Engine.\nI primarily use Maya, ZBrush, Marvelous Designer, Substance 3D Painter, Houdini, and Unreal Engine, with skills in sculpting, PBR texturing, grooming, and look-development support.",
   profileImage: '',
-  skills: ['3D Modeling', 'Hard Surface Modeling', 'Character Modeling', 'Creature Modeling', 'Prop Modeling', 'Costume Modeling', 'Digital Sculpting', 'Texturing', 'Look Development', 'Hair Grooming', 'Hair Simulation'],
+  skills: ['3D Modeling (Characters, Hard-Surface Assets, Creatures, Props, Costumes)', 'Digital Sculpting', 'Texturing', 'Look Development', 'Hair Grooming', 'Hair Simulation'],
   tools: [
     { 
       category: 'Sculpting & Modeling', 
@@ -297,10 +297,6 @@ export const INITIAL_ABOUT: AboutData = {
     { 
       category: 'Lookdev & Texturing', 
       items: ['Substance 3D Painter', 'Autodesk Arnold', 'Unreal Engine', 'Photoshop'] 
-    },
-    { 
-      category: 'Additional', 
-      items: ['Adobe After Effects', 'Adobe Premiere Pro', 'Adobe Illustrator'] 
     }
   ],
   experience: [
