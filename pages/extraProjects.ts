@@ -21,12 +21,12 @@ export interface ExtraProjectData {
 export const EXTRA_PROJECTS: ExtraProjectData[] = [
   {
     id: 'extra01',
-    title: 'SOL: Enchant - Extra01',
+    title: 'SOL: Enchant – Extra 01',
     role: 'Character Design & Facial Modeling & Texturing',
     year: '2025',
     tools: 'Maya / ZBrush / Substance 3D Painter / Unreal Engine 5',
     duration: 'Modelling - 3 Days / Texturing - 1 Day',
-    description: 'Supporting character facial model for the SOL: Enchant cinematic trailer. The character was designed and developed by me, with a focus on realistic anatomy, skin detail, and battle-worn surface treatment.',
+    description: 'This project highlights another contribution I made to SOL: Enchant during my time as a 3D Modeler at CooT Imageworks.\n\nSupporting character facial model for the SOL: Enchant cinematic trailer. The character was designed and developed by me, with a focus on realistic anatomy, skin detail, and battle-worn surface treatment.',
     images: [
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/718/896/large/hj_w-1.jpg?1780776058' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/539/704/large/hj_w-sol01-butty01.jpg?1780260797' },
@@ -39,12 +39,12 @@ export const EXTRA_PROJECTS: ExtraProjectData[] = [
   },
   {
     id: 'extra02',
-    title: 'SOL: Enchant - Extra02',
+    title: 'SOL: Enchant – Extra 02',
     role: 'Armor & Costume Modeling',
     year: '2025',
     tools: 'Maya / ZBrush / Unreal Engine 5',
     duration: 'Modelling - 1 Week',
-    description: 'Armor and costume model rebuilt from a client-provided game asset for the SOL: Enchant cinematic trailer. Focused on form refinement, secondary detail enhancement, and cinematic-quality asset development.',
+    description: 'This was an additional SOL: Enchant assignment I completed while working as a 3D Modeler at CooT Imageworks.\n\nArmor and costume model rebuilt from a client-provided game asset for the SOL: Enchant cinematic trailer. Focused on form refinement, secondary detail enhancement, and cinematic-quality asset development.',
     images: [
       { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/718/743/large/hj_w-5.jpg?1780775568' },
       { category: 'Clay & Zbrush', url: 'https://cdna.artstation.com/p/assets/images/images/099/539/990/large/hj_w-clray.jpg?1780261576' },
@@ -61,12 +61,12 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   ...EXTRA_PROJECTS,
   {
     id: 'raven',
-    title: 'Raven 2 - Deathbringer',
+    title: 'Raven 2 – Deathbringer',
     role: 'Asset Modeling & Texturing',
     year: '2025',
     tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
     duration: 'Modelling - 2 Days / Texturing - 1 Day',
-    description: 'Fantasy shield created for a cinematic trailer, with a focus on ornamental modeling, surface detailing, and texturing various materials.',
+    description: 'While working with CooT Imageworks as a 3D Modeler, I contributed to the Deathbringer cinematic for RAVEN 2, developed by Netmarble Monster and published by Netmarble.\n\nFantasy shield created for a cinematic trailer, with a focus on ornamental modeling, surface detailing, and texturing various materials.',
     images: [
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/176/large/hj_w-.jpg?1780794018' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/258/large/hj_w-3.jpg?1780794377' },
@@ -78,12 +78,12 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   },
   {
     id: 'valhalla_survival',
-    title: 'Valhalla survival',
+    title: 'Valhalla Survival',
     role: 'Ornament Modeling, Hair Simulation & Creature Sculpting, Texturing and Look Development',
     year: '2025',
     tools: 'Maya / ZBrush / Substance 3D Painter / Unreal Engine 5',
     duration: 'Modelling - 3 Days',
-    description: 'Created high-poly ornaments and shoes for the female cinematic character, with a focus on detailed modeling and clean topology, and contributed to parts of the hair simulation. For the monster character, I sculpted and textured the face and body and handled the look development.',
+    description: 'At CooT Imageworks, I had the opportunity to contribute as a 3D Modeler to the cinematic production of Valhalla Survival, developed by LIONHEART STUDIO.\n\nCreated high-poly ornaments and shoes for the female cinematic character, with a focus on detailed modeling and clean topology, and contributed to parts of the hair simulation. For the monster character, I sculpted and textured the face and body and handled the look development.',
     images: [
       { category: 'Beauty', url: 'https://cdnb.artstation.com/p/assets/images/images/099/818/301/small/hj_w-4.jpg?1781054921' },
       { category: 'Beauty', url: 'https://cdna.artstation.com/p/assets/images/images/099/723/014/large/hj_w-1.jpg?1780793490' },
@@ -101,36 +101,36 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   },
   {
     id: 'architect',
-    title: 'ARCHITECT',
+    title: 'Architect',
     role: 'Book Modeling & Texturing',
     year: '2025',
     duration: '2 Days',
     tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
-    description: 'Created a book asset, with a focus on modeling, textures, and small details.',
+    description: 'As a member of the 3D modeling team at CooT Imageworks, I contributed to the cinematic production of ARCHITECT, developed by AQUATREE.\n\nCreated a book asset, with a focus on modeling, textures, and small details.',
     images: [],
     beautyVideos: ['/video/architect/Book_3.mp4', '/video/architect/Book.mp4', '/video/architect/Book_2.mp4'],
     youtubeUrl: 'https://youtu.be/TMz7owMWn7I?si=YPLSORcX3p-AuGww'
   },
   {
     id: 'raven2-warlord',
-    title: 'RAVEN 2 - WARLORD',
+    title: 'Raven 2 – Warlord',
     role: 'Hair Grooming & Simulation',
     year: '2026',
     duration: '1 Day',
     tools: 'Houdini / Unreal Engine 5',
-    description: 'Created the hair groom and simulation, with a focus on natural hair flow and movement.',
+    description: 'In my role as a 3D Modeler at CooT Imageworks, I worked on the Warlord cinematic for RAVEN 2, developed by Netmarble Monster and published by Netmarble.\n\nCreated the hair groom and simulation, with a focus on natural hair flow and movement.',
     images: [{ category: 'Beauty', url: '/images/raven2-warlord/Raven_Hair.png' }],
     hairVideos: ['/video/raven2-warlord/Hair.mp4'],
     youtubeUrl: 'https://youtu.be/5UCXGXjMLO4?si=k_-RBM49D8NlNzI3'
   },
   {
     id: 'vampir-cinematic-01',
-    title: 'VAMPIR - CINEMATIC 01',
+    title: 'Vampir – Cinematic 01',
     role: 'Modeling & Texturing',
     year: '2026',
     duration: '2 Days',
     tools: 'Maya / Substance 3D Painter / Unreal Engine 5',
-    description: 'Modeled and textured a fantasy pillar for VAMPIR, with a focus on its shape, surface details, and worn materials.',
+    description: 'While at CooT Imageworks, I worked as a 3D Modeler across multiple cinematic productions for Netmarble’s VAMPIR.\n\nModeled and textured a fantasy pillar for VAMPIR, with a focus on its shape, surface details, and worn materials.',
     images: [
       { category: 'Beauty', url: '/images/vampir-cinematic-01/beauty-01.png' },
       { category: 'Beauty', url: '/images/vampir-cinematic-01/beauty-02.png' },
@@ -141,12 +141,12 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   },
   {
     id: 'vampir-cinematic-02',
-    title: 'VAMPIR - CINEMATIC 02',
+    title: 'Vampir – Cinematic 02',
     role: 'Hair Grooming & Simulation',
     year: '2026',
     duration: '5 Days',
     tools: 'Houdini / Unreal Engine 5',
-    description: 'Created hair grooms and simulations for VAMPIR, with a focus on hair shape and natural movement.',
+    description: 'At CooT Imageworks, my work as a 3D Modeler also included VAMPIR Cinematic 02, produced for Netmarble.\n\nCreated hair grooms and simulations for VAMPIR, with a focus on hair shape and natural movement.',
     images: [
       { category: 'Beauty', url: '/images/vampir-cinematic-02/Vampire_SN.png' },
       { category: 'Beauty', url: '/images/vampir-cinematic-02/Vampire_capture.png' },
@@ -157,11 +157,11 @@ export const ADDITIONAL_WORK_EXTRA_PROJECTS: ExtraProjectData[] = [
   },
   {
     id: 'zeus',
-    title: 'ZEUS: GOD OF ARROGANCE',
+    title: 'Zeus: God of Arrogance',
     role: 'Statue Modeling, Texturing, Look Development & Hair Simulation',
     year: '2026',
     tools: 'Houdini / ZBrush / Substance 3D Painter / Unreal Engine 5',
-    description: 'Created and refined the statue assets through modeling, texturing, and look development for the cinematic production. I also contributed to hair grooming and simulation for multiple characters, focusing on natural movement and shot-ready results.',
+    description: 'My work at CooT Imageworks included contributing as a 3D Modeler to the cinematic production of ZEUS: God of Arrogance, developed by A Button and published by Com2uS.\n\nCreated and refined the statue assets through modeling, texturing, and look development for the cinematic production. I also contributed to hair grooming and simulation for multiple characters, focusing on natural movement and shot-ready results.',
     images: [
       { category: 'Beauty', url: '/images/zeus/beauty-01.png' },
       { category: 'Beauty', url: '/images/zeus/beauty-02.png' },

@@ -21,7 +21,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Unreal Engine 5'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
-    description: 'High-resolution character rebuilt from the original game model, with improved form and more defined anatomical structure.\nCreated for Netmarble’s SOL: Enchant cinematic, the costume focuses on complex ornamentation and rich surface detail. All elements were fully modeled in geometry, with subtle depth variation to enhance dimensionality and avoid flatness.',
+    description: 'During my time as a 3D Modeler at CooT Imageworks, I contributed to the cinematic production for Netmarble’s SOL: Enchant.\n\nHigh-resolution character rebuilt from the original game model, with improved form and more defined anatomical structure.\n\nThe costume focuses on complex ornamentation and rich surface detail. All elements were fully modeled in geometry, with subtle depth variation to enhance dimensionality and avoid flatness.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/097/396/318/large/hj_w-cinematic-6.jpg?1774035157',
       'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
@@ -73,14 +73,14 @@ export const INITIAL_PROJECTS: Project[] = [
   },
   {
     id: '4',
-    title: 'Chosun Classic',
+    title: 'Chosun Chivalry Classic',
     role: 'Costume Modeling & Texturing',
     year: '2025',
     workTime: 'Modelling - 1 Week\nTexturing - 1 Week',
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'Marvelous Designer', 'Substance 3D Painter', 'Unreal Engine'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/097/420/870/large/hj_w-js-thumnail.jpg?1774129584',
-    description: 'Designed and developed a character costume based on traditional Korean Hanbok for a cinematic project. Responsible for modeling and texturing, with a focus on material accuracy and realistic detail.',
+    description: 'As part of my work at CooT Imageworks, I participated in the cinematic production of Chosun Chivalry Classic, developed by GNI Soft and published by SmartNow.\n\nDesigned and developed a character costume based on traditional Korean Hanbok for a cinematic project. Responsible for modeling and texturing, with a focus on material accuracy and realistic detail.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/097/420/870/large/hj_w-js-thumnail.jpg?1774129584',
       'https://cdnb.artstation.com/p/assets/images/images/099/722/211/large/hj_w-1.jpg?1780789406',
@@ -109,7 +109,7 @@ export const INITIAL_PROJECTS: Project[] = [
   },
   {
     id: '3',
-    title: 'STYLISH BEAST',
+    title: 'Stylish Beast',
     role: 'Creature Modeling & Grooming & Texturing',
     year: '2024',
     workTime: 'Modelling - 2 Weeks\nTexturing - 3 Days\nFur - 3 Days',
@@ -201,7 +201,7 @@ export const INITIAL_PROJECTS: Project[] = [
   },
   {
     id: '1',
-    title: 'EVANGELION Unit-01',
+    title: 'Evangelion Unit-01',
     role: 'Hard Surface & Environment Art',
     year: '2023',
     workTime: 'Modelling - 1 Month and 1 Week\nTexturing - 1 Month',
@@ -286,7 +286,7 @@ export const INITIAL_PROJECTS: Project[] = [
 ];
 
 export const INITIAL_ABOUT: AboutData = {
-  intro: "3D Modeler and Asset Artist with production experience in game cinematics and VFX, creating characters, creatures, costumes, props, and hard-surface assets.\nExperienced in rebuilding low-resolution game models, scan data, and limited concept references as detailed cinematic assets through modeling, sculpting, retopology, UVs, PBR texturing, grooming, and look-development support.\nDeveloped a Houdini-to-Unreal grooming workflow adopted by the production team and used to create 12 hair assets.\nFocused on strong forms, readable detail, and assets that support the needs of rigging, FX, lighting, and final shots.",
+  intro: "I’m a 3D Modeler and Asset Artist with experience in game cinematics and VFX, specializing in characters, creatures, costumes, props, and hard-surface assets.\nMy experience includes creating detailed cinematic assets from low-resolution game models, scan data, and limited concept references, as well as developing practical grooming workflows using Houdini and Unreal Engine.\nI primarily use Maya, ZBrush, Marvelous Designer, Substance 3D Painter, Houdini, and Unreal Engine, with skills in sculpting, PBR texturing, grooming, and look-development support.",
   profileImage: '',
   skills: ['3D Modeling', 'Hard Surface Modeling', 'Character Modeling', 'Creature Modeling', 'Prop Modeling', 'Costume Modeling', 'Digital Sculpting', 'Texturing', 'Look Development', 'Hair Grooming', 'Hair Simulation'],
   tools: [
