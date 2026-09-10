@@ -17,16 +17,15 @@ function CompanyPermissionNotice() {
 }
 function ExtraContent({project, supporting = false}: {project:ExtraProjectData;supporting?:boolean}) {
   const beauty = project.images.filter(image => image.category === 'Beauty').map(image => image.url);
-  const mergeProjectVideos = project.id === 'valhalla_survival' || project.id === 'zeus';
-  const mergedProjectVideos = [...(project.hairVideos || []), ...(project.beautyVideos || [])];
+  const videoClips = [...(project.hairVideos || []), ...(project.beautyVideos || []), ...(project.videoClips || [])];
   return <article className={supporting ? 'supporting-project' : ''}>
     {supporting ? <div className="supporting-info"><h2>{project.title}</h2><p>{project.role} · {project.year}</p><p>{project.tools}</p>{project.duration && <p>{project.duration}</p>}<p>{project.description}</p></div> : <ProjectHero title={project.title} image={project.id === 'extra01' ? '/images/hero-20260904/Sol01_Butty03.png' : project.id === 'architect' ? '/images/architect/Book_AI.png' : beauty[0]} role={project.role} year={project.year} tools={project.tools} duration={project.duration} description={project.description}/>}
     {project.youtubeUrl && <section className="media-section reel-section"><h2>Official Teaser</h2><VideoEmbed url={project.youtubeUrl} title={`${project.title} — Official Teaser`}/></section>}
-    <ImageGallery title="Beauty" images={beauty} firstFull={project.id === 'raven'}/>{!mergeProjectVideos && <Clips title="Beauty" sources={project.beautyVideos}/>} 
+    <Clips title="Video Clips" sources={videoClips}/>
+    <ImageGallery title="Beauty" images={beauty} firstFull={project.id === 'raven'}/>
     <ImageGallery title="Clay & ZBrush" images={project.images.filter(image => image.category === 'Clay & Zbrush').map(image => image.url)}/>
     <ImageGallery title="Wireframe" images={project.images.filter(image => image.category === 'Wireframe').map(image => image.url)}/>
     <ImageGallery title="UV Layout" images={project.images.filter(image => image.category === 'UV layout').map(image => image.url)}/>
-    {mergeProjectVideos ? <Clips title="Video Clips" sources={mergedProjectVideos}/> : <Clips title="Hair Simulation" sources={project.hairVideos}/>}<Clips title="Video Capture" sources={project.videoClips}/>
   </article>;
 }
 export default function ProjectDetail({projects}: {projects:Project[]}) {
