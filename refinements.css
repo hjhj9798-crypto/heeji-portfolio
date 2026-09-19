@@ -79,8 +79,8 @@ html,.carousel-track{scroll-behavior:auto}
 @media(max-width:760px){.company-permission{margin-top:48px;font-size:13px}}
 
 /* Eclipse-specific framing keeps the title mark visible and portrait wireframes compact. */
-.eclipse-detail .detail-hero .detail-cover{object-position:center top}
+.detail-hero .detail-cover{object-fit:contain;object-position:center top;background:#000}
 .eclipse-detail .compact-gallery .gallery-row{width:100%;height:28.125vw;align-items:center;justify-content:center}
 .eclipse-detail .compact-gallery .gallery-image{width:auto;height:100%;flex:none!important}
 .eclipse-detail .compact-gallery .gallery-image img{width:auto;height:100%;max-width:100%;object-fit:contain}
-@media(max-width:480px){.eclipse-detail .compact-gallery .gallery-row{height:auto;flex-direction:column}.eclipse-detail .compact-gallery .gallery-image{width:100%;height:56.25vw;flex:none!important}}
+@media(max-width:480px){.eclipse-detail .compact-gallery .gallery-row{height:56.25vw;flex-direction:row}.eclipse-detail .compact-gallery .gallery-image{width:auto;height:100%;flex:none!important}}
