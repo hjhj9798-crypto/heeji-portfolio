@@ -41,12 +41,13 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
   const project = projects.find(item => item.id === id);
   if(!project) return <div className="not-found"><h1>Project not found</h1><Link to="/#projects">Back to work</Link></div>;
   const reels = [project.mainVideoUrl, ...(project.additionalVideoUrls || [])].filter(Boolean) as string[];
-  return <div className="project-detail" key={project.id}><ProjectHero title={project.title} image={project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
+  return <div className="project-detail" key={project.id}><ProjectHero title={project.title} image={project.heroImage || (project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail)} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
     {reels.length > 0 && <section className="media-section reel-section"><h2>Reel</h2>{reels.map((url,i) => <VideoEmbed key={url} url={url} title={`${project.title} — Reel ${i + 1}`}/>)}</section>}
+    <Clips title="Video Clips" sources={project.videoClips}/>
     {project.id === '4' ? <Clips title="Beauty" sources={['A','B','C','D'].map(letter => `/video/batch-20260904/JS_${letter}.mp4`)}/> : <ImageGallery title="Beauty" images={project.detailRenders}/>} <ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes}/><ImageGallery title="UV Layout" images={project.uvLayouts}/>
     {project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
     <ImageGallery title="References" images={project.references}/>{project.technicalBreakdown && <section className="technical-section"><h2>Technical Breakdown</h2><p>{project.technicalBreakdown}</p></section>}
-    {(project.id === '5' || project.id === '4') && <CompanyPermissionNotice/>}
+    {(project.id === 'eclipse' || project.id === '5' || project.id === '4') && <CompanyPermissionNotice/>}
 
     <div className="back-link"><Link to="/#projects" state={{restoreHome:true}}>← All Work</Link></div>
   </div>;

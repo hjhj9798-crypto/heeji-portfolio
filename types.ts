@@ -5,6 +5,7 @@ export interface Project {
   role: string;
   year: string;
   thumbnail: string;
+  heroImage?: string;
   description: string;
   descriptionCredit?: { name: string; url: string };
   workTime: string;
@@ -17,6 +18,7 @@ export interface Project {
   references: string[];
   mainVideoUrl?: string;
   additionalVideoUrls?: string[];
+  videoClips?: string[];
   turntableVideoUrl?: string;
   technicalBreakdown?: string;
 }
