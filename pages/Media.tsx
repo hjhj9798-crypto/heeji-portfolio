@@ -86,7 +86,7 @@ export function LoopingVideo({ src, label, className = '', expandable = false }:
   </div>;
 }
 
-export function ImageGallery({ title, images, firstFull = false }: { title: string; images: string[]; firstFull?: boolean }) {
+export function ImageGallery({ title, images, firstFull = false, compact = false }: { title: string; images: string[]; firstFull?: boolean; compact?: boolean }) {
   const [index, setIndex] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const isUV = title.toLowerCase().startsWith('uv');
@@ -106,7 +106,7 @@ export function ImageGallery({ title, images, firstFull = false }: { title: stri
   }}/></button>;
   const rows: number[][] = [];
   for(let i=0;i<images.length;) { const size=firstFull && i===0 ? 1 : 2; rows.push(Array.from({length:Math.min(size,images.length-i)},(_,j)=>i+j)); i+=size; }
-  return <section className={`media-section ${isUV ? 'uv-section' : ''}`}><h2>{title}</h2><div className={isUV ? 'image-grid uv-grid' : 'image-rows'}>{isUV ? images.map(renderImage) : rows.map((row,i) => <div className={`gallery-row ${images.length === 1 || (firstFull && i === 0) ? 'single-media' : row.length === 1 ? 'odd-row' : ''}`} key={i}>{row.map(index=>renderImage(images[index],index))}</div>)}</div>
+  return <section className={`media-section ${isUV ? 'uv-section' : ''} ${compact ? 'compact-gallery' : ''}`}><h2>{title}</h2><div className={isUV ? 'image-grid uv-grid' : 'image-rows'}>{isUV ? images.map(renderImage) : rows.map((row,i) => <div className={`gallery-row ${images.length === 1 || (firstFull && i === 0) ? 'single-media' : row.length === 1 ? 'odd-row' : ''}`} key={i}>{row.map(index=>renderImage(images[index],index))}</div>)}</div>
     {index !== null && <dialog ref={dialog} className="lightbox" aria-label={`${title} enlarged image`} onCancel={() => setIndex(null)} onClick={e => { if(e.target === e.currentTarget) setIndex(null); }} onKeyDown={e => { if(e.key === 'ArrowRight') step(1); if(e.key === 'ArrowLeft') step(-1); }}>
       <button className="lightbox-close" aria-label="Close image" onClick={() => setIndex(null)} autoFocus>×</button><img src={originalImage(images[index])} onError={event => { if(event.currentTarget.src !== images[index]) event.currentTarget.src = images[index]; }} onClick={() => setIndex(null)} alt={`${title} — ${index + 1}`}/>
       {images.length > 1 && <><button className="lightbox-prev" aria-label="Previous image" onClick={() => step(-1)}>‹</button><button className="lightbox-next" aria-label="Next image" onClick={() => step(1)}>›</button></>}<span className="image-counter">{index + 1} / {images.length}</span>

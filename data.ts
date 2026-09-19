@@ -15,14 +15,14 @@ export const INITIAL_PROJECTS: Project[] = [
   {
     id: 'eclipse',
     title: 'Eclipse: The Awakening',
-    role: 'Body Armor Modeling & Headgear Texturing',
+    role: 'Body Armor Modeling & Texturing / Headgear Texturing',
     year: '2026',
     workTime: 'Modeling - 1 Month\nTexturing - 1 Week',
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Unreal Engine 5', 'Houdini'],
     thumbnail: '/images/eclipse/site-thumbnail.webp',
     heroImage: '/images/eclipse/hero.webp',
-    description: 'During my time as a 3D Modeler at CooT Imageworks, I contributed to the cinematic production of Eclipse: The Awakening, developed by NPIXEL and published by Smilegate.\n\nI was responsible for modeling the character’s body armor and texturing the headgear, with a focus on detailed forms, material definition, and a polished cinematic finish.',
+    description: 'During my time as a 3D Modeler at CooT Imageworks, I contributed to the cinematic production of Eclipse: The Awakening, developed by NPIXEL and published by Smilegate.\n\nI was responsible for modeling and texturing the character’s body armor, as well as texturing the headgear, with a focus on detailed forms, material definition, and a polished cinematic finish.',
     detailRenders: [
       '/images/eclipse/beauty-01.webp',
       '/images/eclipse/beauty-02.webp',
@@ -45,8 +45,8 @@ export const INITIAL_PROJECTS: Project[] = [
     videoClips: [
       '/video/eclipse/eclipse-a.mp4',
       '/video/eclipse/eclipse-b.mp4',
-      '/video/eclipse/eclipse-c.mp4',
-      '/video/eclipse/eclipse-d.mp4'
+      '/video/eclipse/eclipse-d.mp4',
+      '/video/eclipse/eclipse-c.mp4'
     ],
     turntableVideoUrl: '',
     technicalBreakdown: ''
