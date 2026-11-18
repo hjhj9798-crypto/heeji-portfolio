@@ -124,7 +124,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Production Work',
     toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Unreal Engine 5'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
-    description: 'During my time as a 3D Modeler at CooT Imageworks, I contributed to the cinematic production for Netmarble’s SOL: Enchant.\n\nHigh-resolution character rebuilt from the original game model, with improved form and more defined anatomical structure.\n\nThe costume focuses on complex ornamentation and rich surface detail. All elements were fully modeled in geometry, with subtle depth variation to enhance dimensionality and avoid flatness.',
+    description: 'I worked on Netmarble’s SOL: Enchant cinematic as a 3D modeler at CooT Imageworks.\n\nI used the original game model as a base. I rebuilt the character with more detail and improved the shape of the body.\n\nI also modeled the main character’s armor. It had a lot of small patterns and details. I modeled each detail in 3D. I made some details slightly raised to give the armor more depth.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/097/396/318/large/hj_w-cinematic-6.jpg?1774035157',
       'https://cdna.artstation.com/p/assets/images/images/097/396/300/large/hj_w-cinematic-2.jpg?1774035114',
@@ -219,7 +219,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Personal Work',
     toolsUsed: ['Maya', 'Zbrush', 'Substance 3D Painter', 'knald', 'Photoshop', 'Illustrator', 'Autodesk Arnold'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/080/598/110/large/hj_w-gorilla.jpg?1727982190',
-    description: 'A character based on an existing artist’s original ape creature design, reinterpreted with a fashion forward concept. Focus was placed on integrating surface details such as tattoos, grooming, and accessories to enhance character identity.',
+    description: 'I based this character on another artist’s original ape creature design. I wanted to create a beast that looked both fierce and stylish.\n\nI used tattoos, grooming, and accessories to give the character its own style.',
     detailRenders: [
       'https://cdnb.artstation.com/p/assets/images/images/080/598/079/large/hj_w-gorilla-1.jpg?1727982134',
       'https://cdna.artstation.com/p/assets/images/images/080/598/084/large/hj_w-gorilla-3.jpg?1727982144',
@@ -267,7 +267,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Personal Work',
     toolsUsed: ['Maya', 'Zbrush', 'Substance 3D Painter', 'Marvelous Designer', 'knald', 'Illustrator', 'Photoshop', 'Autodesk Arnold'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/080/597/320/large/hj_w-outputoutput-srgb.jpg?1727980772',
-    description: 'A realistic character inspired by Carey Mulligan, developed with a focus on natural facial features and overall believability. Designed with an officer concept, with detailed costume work and surface development to support a refined and cohesive look.',
+    description: 'I created a realistic 3D model of Carey Mulligan. I focused on making her face look natural and capturing her likeness.\n\nI gave her an officer’s uniform and worked on its details and textures to bring the look together.',
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/080/597/320/large/hj_w-outputoutput-srgb.jpg?1727980772',
       'https://cdna.artstation.com/p/assets/images/images/080/597/328/large/hj_w-careym-3.jpg?1727980781',
@@ -311,7 +311,7 @@ export const INITIAL_PROJECTS: Project[] = [
     projectType: 'Personal Work',
     toolsUsed: ['Maya', 'Zbrush', 'Substance 3D Painter', 'Illustrator', 'Vray'],
     thumbnail: 'https://cdna.artstation.com/p/assets/images/images/080/582/824/large/hj_w-eva-01.jpg?1727954201',
-    description: 'Inspired by Neon Genesis Evangelion and the work of MILITELLO Florian, this scene reinterprets Unit-01 within a post apocalyptic setting. It presents an alternate outcome where the unit remains abandoned, focusing on environmental storytelling, lighting, and cinematic mood.',
+    description: 'I was inspired by Neon Genesis Evangelion and the work of Florian Militello. In this scene, I imagined Unit-01 left behind in a post-apocalyptic world.\n\nI used the environment and lighting to tell the story and give the scene a cinematic feel.',
     descriptionCredit: { name: 'MILITELLO Florian', url: 'https://www.artstation.com/artwork/XnYrPl' },
     detailRenders: [
       'https://cdna.artstation.com/p/assets/images/images/080/582/824/large/hj_w-eva-01.jpg?1727954201',
