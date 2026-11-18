@@ -44,10 +44,16 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
   return <div className={`project-detail ${project.id === 'eclipse' ? 'eclipse-detail' : ''}`} key={project.id}><ProjectHero title={project.title} image={project.heroImage || (project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail)} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
     {reels.length > 0 && <section className="media-section reel-section"><h2>Reel</h2>{reels.map((url,i) => <VideoEmbed key={url} url={url} title={`${project.title} — Reel ${i + 1}`}/>)}</section>}
     <Clips title="Video Clips" sources={project.videoClips}/>
-    {project.id === '4' ? <Clips title="Beauty" sources={['A','B','C','D'].map(letter => `/video/batch-20260904/JS_${letter}.mp4`)}/> : <ImageGallery title="Beauty" images={project.detailRenders}/>} <ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes} compact={project.id === 'eclipse'}/><ImageGallery title="UV Layout" images={project.uvLayouts}/>
-    {project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
+    {project.id === '4' ? (
+      <Clips title="Beauty" sources={['A', 'B', 'C', 'D'].map(letter => `/video/batch-20260904/JS_${letter}.mp4`)} />
+    ) : (
+      <ImageGallery title="Beauty" images={project.detailRenders} />
+    )}
+    {project.id === 'max-holloway' && project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
+    <ImageGallery title="Clay & ZBrush" images={project.clayRenders}/><ImageGallery title="Wireframe" images={project.wireframes} compact={project.id === 'eclipse'}/><ImageGallery title="UV Layout" images={project.uvLayouts}/><ImageGallery title="Hair Grooming Process — Houdini" images={project.hairProcessImages || []}/>
+    {project.id !== 'max-holloway' && project.turntableVideoUrl && <section className="media-section"><h2>Turntable</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Turntable`}/></section>}
     <ImageGallery title="References" images={project.references}/>{project.technicalBreakdown && <section className="technical-section"><h2>Technical Breakdown</h2><p>{project.technicalBreakdown}</p></section>}
-    {(project.id === 'eclipse' || project.id === '5' || project.id === '4') && <CompanyPermissionNotice/>}
+    {project.id === 'max-holloway' ? <p className="company-permission">This work is displayed with permission from Electronic Arts and is not associated with a shipped EA title.</p> : (project.id === 'eclipse' || project.id === '5' || project.id === '4') && <CompanyPermissionNotice/>}
 
     <div className="back-link"><Link to="/#projects" state={{restoreHome:true}}>← All Work</Link></div>
   </div>;

@@ -13,6 +13,51 @@ export const INITIAL_HOME: HomeData = {
 
 export const INITIAL_PROJECTS: Project[] = [
   {
+    id: 'max-holloway',
+    title: 'Max Holloway',
+    role: 'Character Artist – Realistic Character Head',
+    year: '2026',
+    workTime: '1 Week',
+    projectType: 'EA Character Artist Art Test',
+    toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Houdini', 'Photoshop', 'Unreal Engine'],
+    thumbnail: '/images/max-holloway/main1.png',
+    heroImage: '/images/max-holloway/main1.png',
+    description: 'This realistic character head was created for an EA Character Artist art test, based on photographic reference provided by Electronic Arts.\n\nI completed the full character head pipeline, including modeling, sculpting, retopology, UVs, texturing, hair grooming, and rendering. The project focused on creating a believable likeness with natural facial forms, realistic skin details, hair, and material response within a one-week timeframe.',
+    detailRenders: [
+      '/images/max-holloway/main2.png',
+      '/images/max-holloway/main5.png',
+      '/images/max-holloway/main6.png',
+      '/images/max-holloway/main7.png',
+      '/images/max-holloway/main8.png',
+      '/images/max-holloway/main1.png',
+      '/images/max-holloway/main3.png',
+      '/images/max-holloway/main4.png'
+    ],
+    clayRenders: [
+      '/images/max-holloway/clay1.png',
+      '/images/max-holloway/clay2.png',
+      '/images/max-holloway/clay3.png',
+      '/images/max-holloway/clay4.png',
+      '/images/max-holloway/clay5.png',
+      '/images/max-holloway/clay6.png',
+      '/images/max-holloway/clay7.png',
+      '/images/max-holloway/clay8.png'
+    ],
+    wireframes: [
+      '/images/max-holloway/Wireframe1.jpg',
+      '/images/max-holloway/Wireframe2.jpg',
+      '/images/max-holloway/Wireframe3.jpg'
+    ],
+    uvLayouts: [
+      '/images/max-holloway/uv2.jpg',
+      '/images/max-holloway/uv1.jpg'
+    ],
+    hairProcessImages: ['/images/max-holloway/Houdini.png'],
+    references: [],
+    turntableVideoUrl: '/video/max-holloway/Turntable.mp4',
+    technicalBreakdown: ''
+  },
+  {
     id: 'eclipse',
     title: 'Eclipse: The Awakening',
     role: 'Body Armor Modeling & Texturing / Headgear Texturing',

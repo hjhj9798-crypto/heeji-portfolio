@@ -15,6 +15,7 @@ export interface Project {
   clayRenders: string[];
   wireframes: string[];
   uvLayouts: string[];
+  hairProcessImages?: string[];
   references: string[];
   mainVideoUrl?: string;
   additionalVideoUrls?: string[];
