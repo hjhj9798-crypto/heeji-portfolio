@@ -1,19 +1,26 @@
 import React from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { Project } from '../types';
+import { Project, ProjectSubsection } from '../types';
 import { ADDITIONAL_WORK_EXTRA_PROJECTS, ExtraProjectData } from './extraProjects';
 import AdditionalCarousel from './AdditionalCarousel';
 import { ImageGallery, LoopingVideo, VideoEmbed } from './Media';
 export { ADDITIONAL_WORK_EXTRA_PROJECTS } from './extraProjects';
 
-function ProjectHero({title, image, role, year, tools, duration, description, credit}: {title:string;image?:string;role:string;year:string;tools:string;duration?:string;description:string;credit?:{name:string;url:string}}) {
-  return <header className="detail-hero">{image && <img className="detail-cover" src={image} alt="" fetchPriority="high"/>}<div className="detail-shade"/><div className="project-info"><h1>{title}</h1><dl><div><dt>Role</dt><dd>{role}</dd></div><div><dt>Year</dt><dd>{year}</dd></div><div><dt>Tools</dt><dd>{tools}</dd></div>{duration && <div><dt>Duration</dt><dd>{duration}</dd></div>}</dl><p>{description}</p>{credit && <a className="credit-link" href={credit.url} target="_blank" rel="noopener noreferrer">Original concept: {credit.name} ↗</a>}</div></header>;
+function ProjectHero({title, image, role, year, projectType, tools, duration, description, credit}: {title:string;image?:string;role:string;year:string;projectType?:string;tools:string;duration?:string;description:string;credit?:{name:string;url:string}}) {
+  return <header className="detail-hero">{image && <img className="detail-cover" src={image} alt="" fetchPriority="high"/>}<div className="detail-shade"/><div className="project-info"><h1>{title}</h1><dl><div><dt>Role</dt><dd>{role}</dd></div><div><dt>Year</dt><dd>{year}</dd></div>{projectType && <div><dt>Project Type</dt><dd>{projectType}</dd></div>}<div><dt>Tools</dt><dd>{tools}</dd></div>{duration && <div><dt>Duration</dt><dd>{duration}</dd></div>}</dl><p>{description}</p>{credit && <a className="credit-link" href={credit.url} target="_blank" rel="noopener noreferrer">Original concept: {credit.name} ↗</a>}</div></header>;
 }
 function Clips({title, sources}: {title:string;sources?:string[]}) {
   return sources?.length ? <section className="media-section"><h2>{title}</h2><div className={`video-grid ${sources.length === 1 ? 'single-video' : ''}`}>{sources.map((src,i) => <LoopingVideo expandable key={src} src={src} label={`${title} ${i + 1}`}/>)}</div></section> : null;
 }
-function CompanyPermissionNotice() {
-  return <p className="company-permission">This work is displayed with permission from the respective company.</p>;
+function SecondaryProjectInfo({work}: {work: ProjectSubsection}) {
+  return <section className="secondary-project-info">
+    <h2>{work.title}</h2>
+    <dl>
+      <div><dt>Role</dt><dd>{work.role}</dd></div>
+      {work.duration && <div><dt>Duration</dt><dd>{work.duration}</dd></div>}
+    </dl>
+    <p>{work.description}</p>
+  </section>;
 }
 function ExtraContent({project, supporting = false}: {project:ExtraProjectData;supporting?:boolean}) {
   const beauty = project.images.filter(image => image.category === 'Beauty').map(image => image.url);
@@ -36,15 +43,19 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
     const selected = ADDITIONAL_WORK_EXTRA_PROJECTS.find(project => project.id === work);
     if(!work) return <div className="additional-index"><h1>ADDITIONAL WORK</h1><AdditionalCarousel/></div>;
     if(!selected) return <div className="not-found"><h1>Project not found</h1><Link to="/#additional-work">Back to Additional Work</Link></div>;
-    return <div className="project-detail" key={selected.id}><ExtraContent project={selected}/><CompanyPermissionNotice/><div className="back-link"><Link to="/#additional-work" state={{restoreHome:true}}>← All Additional Work</Link></div></div>;
+    return <div className="project-detail" key={selected.id}><ExtraContent project={selected}/><div className="back-link"><Link to="/#additional-work" state={{restoreHome:true}}>← All Additional Work</Link></div></div>;
   }
   const project = projects.find(item => item.id === id);
   if(!project) return <div className="not-found"><h1>Project not found</h1><Link to="/#projects">Back to work</Link></div>;
   const reels = [project.mainVideoUrl, ...(project.additionalVideoUrls || [])].filter(Boolean) as string[];
-  return <div className={`project-detail ${project.id === 'eclipse' ? 'eclipse-detail' : ''}`} key={project.id}><ProjectHero title={project.title} image={project.heroImage || (project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail)} role={project.role} year={project.year} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
+  return <div className={`project-detail ${project.id === 'eclipse' ? 'eclipse-detail' : ''}`} key={project.id}><ProjectHero title={project.title} image={project.heroImage || (project.id === '5' ? '/images/sol-hero-cinematic/Cinematic02.png' : project.thumbnail)} role={project.role} year={project.year} projectType={project.id === 'hope' ? project.projectType : undefined} tools={project.toolsUsed.join(' / ')} duration={project.workTime} description={project.description} credit={project.descriptionCredit}/>
     {project.id === 'max-holloway' && project.turntableVideoUrl && <section className="media-section reel-section"><h2>Reel</h2><VideoEmbed url={project.turntableVideoUrl} title={`${project.title} — Reel`}/></section>}
     {reels.length > 0 && <section className="media-section reel-section"><h2>Reel</h2>{reels.map((url,i) => <VideoEmbed key={url} url={url} title={`${project.title} — Reel ${i + 1}`}/>)}</section>}
     <Clips title="Video Clips" sources={project.videoClips}/>
+    {project.secondaryWork && <>
+      <SecondaryProjectInfo work={project.secondaryWork}/>
+      <Clips title="Video Clip" sources={project.secondaryWork.videoClips}/>
+    </>}
     {project.id === '4' ? (
       <Clips title="Beauty" sources={['A', 'B', 'C', 'D'].map(letter => `/video/batch-20260904/JS_${letter}.mp4`)} />
     ) : (
@@ -56,7 +67,7 @@ export default function ProjectDetail({projects}: {projects:Project[]}) {
     {project.id === 'max-holloway' && (
       <ImageGallery title="Reference" images={project.references} />
     )}
-    {project.id === 'max-holloway' ? <p className="company-permission">This work is displayed with permission from Electronic Arts and is not associated with a shipped EA title.</p> : (project.id === 'eclipse' || project.id === '5' || project.id === '4') && <CompanyPermissionNotice/>}
+    {project.id === 'max-holloway' && <p className="company-permission">This work is displayed with permission from Electronic Arts and is not associated with a shipped EA title.</p>}
 
     <div className="back-link"><Link to="/#projects" state={{restoreHome:true}}>← All Work</Link></div>
   </div>;

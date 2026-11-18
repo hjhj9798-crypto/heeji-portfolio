@@ -84,3 +84,13 @@ html,.carousel-track{scroll-behavior:auto}
 .eclipse-detail .compact-gallery .gallery-image{width:auto;height:100%;flex:none!important}
 .eclipse-detail .compact-gallery .gallery-image img{width:auto;height:100%;max-width:100%;object-fit:contain}
 @media(max-width:480px){.eclipse-detail .compact-gallery .gallery-row{height:56.25vw;flex-direction:row}.eclipse-detail .compact-gallery .gallery-image{width:auto;height:100%;flex:none!important}}
+
+/* A second credit block keeps HOPE's environment and prop contributions distinct. */
+.secondary-project-info{padding:clamp(72px,8vw,140px) var(--page-space) clamp(40px,5vw,80px);max-width:1700px}
+.secondary-project-info h2{margin:0 0 36px;font-size:clamp(42px,5vw,72px);line-height:1.05;letter-spacing:-.035em}
+.secondary-project-info dl{display:flex;flex-wrap:wrap;gap:28px 72px;margin:0 0 40px}
+.secondary-project-info dl>div{min-width:220px}
+.secondary-project-info dt{margin-bottom:8px;font-size:18px;font-weight:700}
+.secondary-project-info dd{margin:0;font-size:24px;line-height:1.35;white-space:pre-line}
+.secondary-project-info>p{max-width:1250px;margin:0;font-size:clamp(22px,1.8vw,30px);line-height:1.55;white-space:pre-line}
+@media(max-width:760px){.secondary-project-info{padding-left:24px;padding-right:24px}.secondary-project-info h2{font-size:42px}.secondary-project-info dl{gap:24px 40px}.secondary-project-info dd{font-size:22px}.secondary-project-info>p{font-size:22px}}

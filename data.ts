@@ -5,7 +5,7 @@ export const INITIAL_HOME: HomeData = {
   name: 'Heeji Woo',
   professionalTitle: '',
   description: '',
-  heroVideoUrl: 'https://player.vimeo.com/video/1210744531',
+  heroVideoUrl: 'https://player.vimeo.com/video/1247910850',
   portfolioPdfUrl: '/pdf/Portfolio.pdf',
   resumePdfUrl: '/pdf/Resume.pdf',
   backgroundGifUrl: '/video/Home_Background.mp4'
@@ -13,11 +13,41 @@ export const INITIAL_HOME: HomeData = {
 
 export const INITIAL_PROJECTS: Project[] = [
   {
+    id: 'hope',
+    title: 'HOPE — Alien Spaceship Environment Asset',
+    role: 'Organic Hard-Surface Modeling & UVs',
+    year: '2025',
+    workTime: '6 Weeks',
+    projectType: 'Film Production Work',
+    toolsUsed: ['Maya', 'ZBrush'],
+    thumbnail: '/images/hope/Thumbnail.png',
+    heroImage: '/images/hope/Thumbnail.png',
+    description: 'I modeled and created the UVs for part of an alien spaceship interior asset. The asset has curved and organic shapes instead of typical angular hard-surface forms.\n\nI received only one concept image. For the parts that were not shown, I found additional references and modeled them to stay close to the concept.',
+    detailRenders: [],
+    clayRenders: [],
+    wireframes: [],
+    uvLayouts: [],
+    references: [],
+    videoClips: [
+      '/video/hope/Hardsub1.mp4',
+      '/video/hope/Hardsub2.mp4'
+    ],
+    secondaryWork: {
+      title: 'Flying Scene Props',
+      role: 'Character Prop Modeling',
+      duration: '2 Weeks — 3 Props',
+      description: 'I also modeled the bag, police badge, and belt keys for Hwang Jung-min’s character. These props were created for the flying scene.',
+      videoClips: ['/video/hope/HJM.mp4']
+    },
+    turntableVideoUrl: '',
+    technicalBreakdown: ''
+  },
+  {
     id: 'max-holloway',
     title: 'Max Holloway',
     role: 'Realistic Character Head',
     year: '2026',
-    workTime: 'Modelling - 3 Days\nTexturing - 1 Day\nHair - 1 Day\n룩디벨롭 - 1 Day',
+    workTime: 'Modelling - 3 Days\nTexturing - 1 Day\nHair - 1 Day\nLook Development - 1 Day',
     projectType: 'EA Character Artist Art Test',
     toolsUsed: ['Maya', 'ZBrush', 'Substance 3D Painter', 'Houdini', 'Photoshop', 'Unreal Engine'],
     thumbnail: '/images/max-holloway/main1.png',

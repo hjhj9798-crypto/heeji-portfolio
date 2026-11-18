@@ -1,4 +1,12 @@
 
+export interface ProjectSubsection {
+  title: string;
+  role: string;
+  duration?: string;
+  description: string;
+  videoClips?: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -20,6 +28,7 @@ export interface Project {
   mainVideoUrl?: string;
   additionalVideoUrls?: string[];
   videoClips?: string[];
+  secondaryWork?: ProjectSubsection;
   turntableVideoUrl?: string;
   technicalBreakdown?: string;
 }

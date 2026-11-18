@@ -14,10 +14,11 @@ export function VideoEmbed({ url, title }: { url: string; title: string }) {
 
 export function LoopingVideo({ src, label, className = '', expandable = false }: { src: string; label: string; className?: string; expandable?: boolean }) {
   const optimized = src.startsWith('/video/');
-  const isDirectOptimized = src.startsWith('/video/batch-20260904/') || src.startsWith('/video/content-20260905/') || src.startsWith('/video/eclipse/');
+  const isNewDirectVideo = src.startsWith('/video/hope/') || src.startsWith('/video/home/');
+  const isDirectOptimized = src.startsWith('/video/batch-20260904/') || src.startsWith('/video/content-20260905/') || src.startsWith('/video/eclipse/') || isNewDirectVideo;
   const previewSrc = isDirectOptimized ? src : optimized ? src.replace('/video/', '/video/polish-20260904/') : src;
-  const fullSrc = optimized && !src.endsWith('/main.mp4') && !src.startsWith('/video/eclipse/') ? previewSrc.replace(/\.mp4$/, '-hd.mp4') : previewSrc;
-  const poster = optimized ? previewSrc.replace(/\.mp4$/, '.jpg') : undefined;
+  const fullSrc = optimized && !src.endsWith('/main.mp4') && !src.startsWith('/video/eclipse/') && !isNewDirectVideo ? previewSrc.replace(/\.mp4$/, '-hd.mp4') : previewSrc;
+  const poster = optimized && !isNewDirectVideo ? previewSrc.replace(/\.mp4$/, '.jpg') : undefined;
   const ref = useRef<HTMLVideoElement>(null);
   const [expanded, setExpanded] = useState(false);
   const fullscreen = useRef<HTMLDialogElement>(null);
