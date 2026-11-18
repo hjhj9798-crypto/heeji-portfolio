@@ -22,18 +22,15 @@ export const INITIAL_PROJECTS: Project[] = [
     toolsUsed: ['Maya', 'ZBrush'],
     thumbnail: '/images/hope/Thumbnail.png',
     heroImage: '/images/hope/Thumbnail.png',
-    description: 'I modeled and created the UVs for part of an alien spaceship interior asset. The asset has curved and organic shapes instead of typical angular hard-surface forms.\n\nI received only one concept image. For the parts that were not shown, I found additional references and modeled them to stay close to the concept.',
+    description: 'During my time as a 3D Modeler at Westworld, I contributed to the film production of HOPE.\n\nI modeled and created the UVs for part of an alien spaceship interior asset. The asset has curved and organic shapes instead of typical angular hard-surface forms.\n\nI received only one concept image. For the parts that were not shown, I found additional references and modeled them to stay close to the concept.',
     detailRenders: [],
     clayRenders: [],
     wireframes: [],
     uvLayouts: [],
     references: [],
-    videoClips: [
-      '/video/hope/Hardsub1.mp4',
-      '/video/hope/Hardsub2.mp4'
-    ],
+    videoClips: ['/video/hope/Hardsub1.mp4'],
     secondaryWork: {
-      title: 'Flying Scene Props',
+      title: 'Character Props — Flying Sequence',
       role: 'Character Prop Modeling',
       duration: '2 Weeks — 3 Props',
       description: 'I also modeled the bag, police badge, and belt keys for Hwang Jung-min’s character. These props were created for the flying scene.',
